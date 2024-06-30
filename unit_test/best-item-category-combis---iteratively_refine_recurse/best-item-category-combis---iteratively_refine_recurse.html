@@ -1,0 +1,80 @@
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th {
+  background-color: #dddddd;
+  border: 1px solid #030303;
+  text-align: left;
+  padding: 8px;
+}
+          td {
+            font-weight: bold;
+            border: 1px solid #030303;
+            text-align: left;
+            padding: 8px;
+            white-space: pre;
+            font-family: arial, sans-serif;
+            font-size: 100%;
+          }
+h1 {margin-top: 0em; margin-bottom: 0em;
+  font-family: arial, sans-serif;
+  width: 100%;
+  font-size: 300%;
+  background-color: #FFFF00;
+}
+h2 {margin-top: 0em; margin-bottom: 0em;
+  font-family: arial, sans-serif;
+  width: 100%;
+  font-size: 200%;
+  background-color: #2AE6C1;
+}
+h3 {margin-top: 0em; margin-bottom: 0em;
+  font-family: arial, sans-serif;
+  width: 100%;
+  font-size: 150%;
+  background-color: #33F0FF;
+}
+h4 {margin-top: 0em; margin-bottom: 0em;
+  font-family: arial, sans-serif;
+  width: 100%;
+  font-size: 125%;
+  background-color: #7DFF33;
+}
+</style>
+</head>
+<body>
+<h1>Unit Test Report: Best Item Category Combis - Iteratively_Refine_Recurse</h1>
+<table>
+<tr><th>#</th><th>Category Set</th><th>Scenario</th><th>Fails (of 2)</th><th>Status</th></tr>
+<tr><td>1</td><td>Choose Range (r / n)</td><td><a href="choose-1-_-n.html" target="_blank">Choose 1 / n</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>2</td><td>Choose Range (r / n)</td><td><a href="choose-r-_-n-(r-lt-n).html" target="_blank">Choose r / n (r < n)</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>3</td><td>Choose Range (r / n)</td><td><a href="choose-n-_-n.html" target="_blank">Choose n / n</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>4</td><td>ItemCat Multiplicity</td><td><a href="no-itemcats.html" target="_blank">No itemcats</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>5</td><td>ItemCat Multiplicity</td><td><a href="one-itemcat.html" target="_blank">One itemcat</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>6</td><td>ItemCat Multiplicity</td><td><a href="multiple-itemcats.html" target="_blank">Multiple itemcats</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>7</td><td>ItemCat Range</td><td><a href="itemcat-min-only.html" target="_blank">Itemcat min only</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>8</td><td>ItemCat Range</td><td><a href="itemcat-max-only.html" target="_blank">Itemcat max only</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>9</td><td>ItemCat Range</td><td><a href="itemcat-with-min-lt-max.html" target="_blank">Itemcat with min < max</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>10</td><td>ItemCat Range</td><td><a href="itemcat-with-min-=-max.html" target="_blank">Itemcat with min = max</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>11</td><td>Solution Multiplicity (Actual / Top N)</td><td><a href="no-solution-(want-top-n).html" target="_blank">No solution (want top N)</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>12</td><td>Solution Multiplicity (Actual / Top N)</td><td><a href="1-solution-(want-top-1).html" target="_blank">1 solution (want top 1)</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>13</td><td>Solution Multiplicity (Actual / Top N)</td><td><a href="n-solutions-(want-top-n).html" target="_blank">N solutions (want top N)</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>14</td><td>Solution Multiplicity (Actual / Top N)</td><td><a href="lt-n-solutions-(want-top-n).html" target="_blank">< N solutions (want top N)</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>15</td><td>Constraint Activity</td><td><a href="no-active-constraint.html" target="_blank">No active constraint</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>16</td><td>Constraint Activity</td><td><a href="price-maximum-active.html" target="_blank">Price maximum active</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>17</td><td>Constraint Activity</td><td><a href="itemcat-minimum-active.html" target="_blank">Itemcat minimum active</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>18</td><td>Constraint Activity</td><td><a href="itemcat-maximum-active.html" target="_blank">Itemcat maximum active</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>19</td><td>Constraint Infeasibility</td><td><a href="solutions-exist.html" target="_blank">Solutions exist</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>20</td><td>Constraint Infeasibility</td><td><a href="no-solution---price-maximum.html" target="_blank">No solution - price maximum</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>21</td><td>Constraint Infeasibility</td><td><a href="no-solution---itemcat-minimum.html" target="_blank">No solution - itemcat minimum</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>22</td><td>Constraint Infeasibility</td><td><a href="no-solution---itemcat-maximum.html" target="_blank">No solution - itemcat maximum</a></td><td>0</td><td>SUCCESS</td></tr>
+</table>
+<h1>Test scenarios: 0 failed of 22: SUCCESS</h1>
+<h4>Tested: 2024-05-26 13:10:26, Formatted: 2024-05-26 13:10:26</h4>
+</body></html>

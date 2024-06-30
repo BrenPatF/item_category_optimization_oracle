@@ -1,0 +1,1 @@
+pwsh .\Format-JSON-All_Nets.ps1  > .\Format-JSON-All_Nets.out 2> .\Format-JSON-All_Nets.err

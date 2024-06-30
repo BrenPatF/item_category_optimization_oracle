@@ -1,0 +1,493 @@
+
+Database             Time                 Version
+-------------------- -------------------- ------------------------------
+Start: ORCL          10-JUN-2024 23:55:22 Version 21.3.0.0.0
+
+Recompile item_cat_seqs.pkb
+
+Package body created.
+
+No errors.
+Just set context values: SEQ_SIZE = 11, MAX_PRICE = 890, ITEM_WIDTH = 3, TOP_N = 10
+Previously set context values: SEQ_TYPE = , MIN_VALUE = 0, KEEP_NUM = 50
+
+PL/SQL procedure successfully completed.
+
+
+PL/SQL procedure successfully completed.
+
+old   2:      Item_Cat_Seqs.Set_Contexts(p_keep_num      => &KEEP_NUM,
+new   2:      Item_Cat_Seqs.Set_Contexts(p_keep_num      => 300,
+old   3:                                 p_min_value     => &MIN_VALUE);
+new   3:                                 p_min_value     => 0);
+Just set context values: MIN_VALUE = 0, KEEP_NUM = 300
+Previously set context values: SEQ_TYPE = , SEQ_SIZE = 11, MAX_PRICE = 890, ITEM_WIDTH = 3, TOP_N = 10
+
+PL/SQL procedure successfully completed.
+
+Solution via view rsf_sql_v (unhinted)...
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+
+Path                              Total Value Total Price  Rank
+--------------------------------- ----------- ----------- -----
+037024160463488298027452193344166        1965         889     1
+037024160264488298045027452193166                     890     2
+037024160463488298044027452193344        1963         890     3
+037024160463488298044027452193166        1962         884     4
+037024160264488298314027452193166                     885     5
+037024160272488298044027452193166                     889     6
+252024160264488298044027452193166        1959         889     7
+037024160463488298045027452193344        1958         887     8
+037024160463488298045027452193166        1957         881     9
+037024160463488298314027452328166                     886    10
+
+10 rows selected.
+
+Elapsed: 00:20:52.51
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+SQL_ID  av5x9qfzbdcbn, child number 0
+-------------------------------------
+SELECT /*+ gather_plan_statistics SQL_V */ path,        tot_value,
+tot_price,        rnk   FROM rsf_sql_v  WHERE rnk <= :TOP_N ORDER BY
+rnk, tot_price
+Plan hash value: 3116385525
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Id  | Operation                                     | Name                        | Starts | E-Rows | A-Rows |   A-Time   | Buffers | Reads  | Writes |  OMem |  1Mem | Used-Mem | Used-Tmp|
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT                              |                             |      1 |        |     10 |00:20:52.48 |      75M|    207K|    207K|       |       |          |         |
+|   1 |  SORT ORDER BY                                |                             |      1 |      6 |     10 |00:20:52.48 |      75M|    207K|    207K|  2048 |  2048 | 2048  (0)|         |
+|*  2 |   VIEW                                        | RSF_SQL_V                   |      1 |      6 |     10 |00:20:52.48 |      75M|    207K|    207K|       |       |          |         |
+|   3 |    TEMP TABLE TRANSFORMATION                  |                             |      1 |        |     10 |00:20:52.48 |      75M|    207K|    207K|       |       |          |         |
+|   4 |     LOAD AS SELECT (CURSOR DURATION MEMORY)   | SYS_TEMP_0FD9D6C58_147E856B |      1 |        |      0 |00:00:00.01 |       8 |      0 |      0 |  1024 |  1024 |          |         |
+|   5 |      WINDOW SORT                              |                             |      1 |    560 |    560 |00:00:00.01 |       7 |      0 |      0 | 80896 | 80896 |71680  (0)|         |
+|   6 |       WINDOW SORT                             |                             |      1 |    560 |    560 |00:00:00.01 |       7 |      0 |      0 | 74752 | 74752 |65536  (0)|         |
+|   7 |        TABLE ACCESS FULL                      | EPL_PLAYERS                 |      1 |    560 |    560 |00:00:00.01 |       7 |      0 |      0 |       |       |          |         |
+|   8 |     LOAD AS SELECT (CURSOR DURATION MEMORY)   | SYS_TEMP_0FD9D6C59_147E856B |      1 |        |      0 |00:00:00.01 |       7 |      0 |      0 |  1024 |  1024 |          |         |
+|   9 |      WINDOW SORT                              |                             |      1 |      5 |      5 |00:00:00.01 |       7 |      0 |      0 |  2048 |  2048 | 2048  (0)|         |
+|  10 |       WINDOW SORT                             |                             |      1 |      5 |      5 |00:00:00.01 |       7 |      0 |      0 |  2048 |  2048 | 2048  (0)|         |
+|  11 |        TABLE ACCESS FULL                      | EPL_POSITIONS               |      1 |      5 |      5 |00:00:00.01 |       7 |      0 |      0 |       |       |          |         |
+|* 12 |     WINDOW SORT PUSHED RANK                   |                             |      1 |      6 |     10 |00:20:52.48 |      75M|    207K|    207K|  2048 |  2048 | 2048  (0)|         |
+|* 13 |      VIEW                                     |                             |      1 |      6 |    462K|00:20:52.46 |      75M|    207K|    207K|       |       |          |         |
+|  14 |       UNION ALL (RECURSIVE WITH) BREADTH FIRST|                             |      1 |        |   2844K|00:01:05.64 |      75M|    207K|    207K|    87M|  3203K|   77M (0)|         |
+|* 15 |        VIEW                                   |                             |      1 |      5 |      1 |00:00:00.01 |       0 |      0 |      0 |       |       |          |         |
+|  16 |         TABLE ACCESS FULL                     | SYS_TEMP_0FD9D6C59_147E856B |      1 |      5 |      5 |00:00:00.01 |       0 |      0 |      0 |       |       |          |         |
+|  17 |        WINDOW SORT                            |                             |     12 |      1 |   2844K|00:19:52.98 |     104 |    207K|    207K|   142M|  4041K|   97M (1)|     128M|
+|* 18 |         FILTER                                |                             |     12 |        |   2844K|00:19:44.56 |      84 |  98357 |  98357 |       |       |          |         |
+|* 19 |          HASH JOIN OUTER                      |                             |     12 |      1 |   2954K|00:19:44.02 |      84 |  98357 |  98357 |   134M|  8549K|  140M (1)|     109M|
+|* 20 |           FILTER                              |                             |     12 |        |   2954K|00:19:40.87 |      84 |  52453 |  52453 |       |       |          |         |
+|* 21 |            HASH JOIN OUTER                    |                             |     12 |      1 |   2954K|00:19:40.24 |      84 |  52453 |  52453 |   126M|  8657K|   65M (1)|     101M|
+|  22 |             NESTED LOOPS                      |                             |     12 |      1 |   2954K|00:03:18.69 |      84 |      0 |      0 |       |       |          |         |
+|  23 |              RECURSIVE WITH PUMP              |                             |     12 |        |   2844K|00:00:00.58 |       0 |      0 |      0 |       |       |          |         |
+|* 24 |              VIEW                             |                             |   2844K|      1 |   2954K|00:19:35.22 |      84 |      0 |      0 |       |       |          |         |
+|  25 |               WINDOW SORT                     |                             |   2844K|    560 |   1592M|00:11:51.90 |      84 |      0 |      0 |   106K|   106K|96256  (0)|         |
+|* 26 |                HASH JOIN                      |                             |     12 |    560 |   6720 |00:00:00.01 |      84 |      0 |      0 |  1399K|  1399K| 1254K (0)|         |
+|  27 |                 VIEW                          |                             |     12 |      5 |     60 |00:00:00.01 |       0 |      0 |      0 |       |       |          |         |
+|  28 |                  TABLE ACCESS FULL            | SYS_TEMP_0FD9D6C59_147E856B |     12 |      5 |     60 |00:00:00.01 |       0 |      0 |      0 |       |       |          |         |
+|  29 |                 TABLE ACCESS FULL             | EPL_PLAYERS                 |     12 |    560 |   6720 |00:00:00.01 |      84 |      0 |      0 |       |       |          |         |
+|  30 |             BUFFER SORT (REUSE)               |                             |     11 |        |   6160 |00:00:00.01 |       0 |      0 |      0 | 73728 | 73728 |          |         |
+|  31 |              VIEW                             |                             |      1 |    560 |    560 |00:00:00.01 |       0 |      0 |      0 |       |       |          |         |
+|  32 |               TABLE ACCESS FULL               | SYS_TEMP_0FD9D6C58_147E856B |      1 |    560 |    560 |00:00:00.01 |       0 |      0 |      0 |       |       |          |         |
+|  33 |           VIEW                                |                             |     11 |    560 |   6160 |00:00:00.01 |       0 |      0 |      0 |       |       |          |         |
+|  34 |            TABLE ACCESS FULL                  | SYS_TEMP_0FD9D6C58_147E856B |     11 |    560 |   6160 |00:00:00.01 |       0 |      0 |      0 |       |       |          |         |
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Predicate Information (identified by operation id):
+---------------------------------------------------
+2 - filter("RNK"<=:TOP_N)
+12 - filter(ROW_NUMBER() OVER ( ORDER BY INTERNAL_FUNCTION("TOT_VALUE") DESC ,"TOT_PRICE")<=:TOP_N)
+13 - filter("LEV"=TO_NUMBER(SYS_CONTEXT('RECURSION_CTX','SEQ_SIZE')))
+15 - filter("ID"='AL')
+18 - filter("IRK"."MAX_PRICE">="TRW"."TOT_PRICE"+"IRK"."ITEM_PRICE"+NVL("IPR"."SUM_PRICE",0))
+19 - access("IPR"."INDEX_PRICE"="IRK"."SEQ_SIZE"-"TRW"."LEV"-1)
+20 - filter("IRK"."MIN_VALUE"<="TRW"."TOT_VALUE"+"IRK"."ITEM_VALUE"+NVL("IVR"."SUM_VALUE",0))
+21 - access("IVR"."INDEX_VALUE"="IRK"."SEQ_SIZE"-"TRW"."LEV"-1)
+24 - filter((("TRW"."PATH_RNK"<="IRK"."KEEP_NUM" OR "IRK"."KEEP_NUM"=0) AND "TRW"."LEV"<"IRK"."SEQ_SIZE" AND "IRK"."MAX_ITEMS">=CASE "IRK"."CATEGORY_ID" WHEN "TRW"."CAT_ID" THEN
+"TRW"."SAME_CATS"+1 ELSE 1 END  AND "IRK"."MIN_REMAIN"<="IRK"."SEQ_SIZE"-("TRW"."LEV"+1)+LEAST(CASE "IRK"."CATEGORY_ID" WHEN "TRW"."CAT_ID" THEN "TRW"."SAME_CATS"+1 ELSE 1 END
+,"IRK"."MIN_ITEMS") AND ("IRK"."CATEGORY_ID"="TRW"."CAT_ID" OR "TRW"."SAME_CATS">="TRW"."MIN_ITEMS") AND ("IRK"."CATEGORY_ID"="TRW"."CAT_ID" OR
+"IRK"."CATEGORY_ID"=NVL("TRW"."NEXT_CAT","IRK"."CATEGORY_ID")) AND "IRK"."ITEM_RNK">="TRW"."ITEM_RNK"+1 AND "IRK"."ITEM_RNK"<="IRK"."N_ITEMS"-("IRK"."SEQ_SIZE"-"TRW"."LEV"-1)))
+26 - access("CRS"."ID"="POSITION")
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.23
+Solution via view rsf_sql_material_v (materialize hint)...
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+
+Path                              Total Value Total Price  Rank
+--------------------------------- ----------- ----------- -----
+037024160463488298027452193344166        1965         889     1
+037024160264488298045027452193166                     890     2
+037024160463488298044027452193344        1963         890     3
+037024160463488298044027452193166        1962         884     4
+037024160264488298314027452193166                     885     5
+037024160272488298044027452193166                     889     6
+252024160264488298044027452193166        1959         889     7
+037024160463488298045027452193344        1958         887     8
+037024160463488298045027452193166        1957         881     9
+037024160463488298314027452328166                     886    10
+
+10 rows selected.
+
+Elapsed: 00:05:18.42
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+SQL_ID  as18affkcu2az, child number 0
+-------------------------------------
+SELECT /*+ gather_plan_statistics SQL_MATERIAL_V */ path,
+tot_value,        tot_price,        rnk   FROM rsf_sql_material_v
+WHERE rnk <= :TOP_N ORDER BY rnk, tot_price
+Plan hash value: 3545484027
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Id  | Operation                                     | Name                        | Starts | E-Rows | A-Rows |   A-Time   | Buffers | Reads  | Writes |  OMem |  1Mem | Used-Mem | Used-Tmp|
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT                              |                             |      1 |        |     10 |00:05:18.41 |      75M|    225K|    225K|       |       |          |         |
+|   1 |  SORT ORDER BY                                |                             |      1 |      6 |     10 |00:05:18.41 |      75M|    225K|    225K|  2048 |  2048 | 2048  (0)|         |
+|*  2 |   VIEW                                        | RSF_SQL_MATERIAL_V          |      1 |      6 |     10 |00:05:18.41 |      75M|    225K|    225K|       |       |          |         |
+|   3 |    TEMP TABLE TRANSFORMATION                  |                             |      1 |        |     10 |00:05:18.41 |      75M|    225K|    225K|       |       |          |         |
+|   4 |     LOAD AS SELECT (CURSOR DURATION MEMORY)   | SYS_TEMP_0FD9D6C5A_147E856B |      1 |        |      0 |00:00:00.01 |       8 |      0 |      0 |  1024 |  1024 |          |         |
+|   5 |      WINDOW SORT                              |                             |      1 |    560 |    560 |00:00:00.01 |       7 |      0 |      0 | 80896 | 80896 |71680  (0)|         |
+|   6 |       WINDOW SORT                             |                             |      1 |    560 |    560 |00:00:00.01 |       7 |      0 |      0 | 74752 | 74752 |65536  (0)|         |
+|   7 |        TABLE ACCESS FULL                      | EPL_PLAYERS                 |      1 |    560 |    560 |00:00:00.01 |       7 |      0 |      0 |       |       |          |         |
+|   8 |     LOAD AS SELECT (CURSOR DURATION MEMORY)   | SYS_TEMP_0FD9D6C5B_147E856B |      1 |        |      0 |00:00:00.01 |       7 |      0 |      0 |  1024 |  1024 |          |         |
+|   9 |      WINDOW SORT                              |                             |      1 |      5 |      5 |00:00:00.01 |       7 |      0 |      0 |  2048 |  2048 | 2048  (0)|         |
+|  10 |       WINDOW SORT                             |                             |      1 |      5 |      5 |00:00:00.01 |       7 |      0 |      0 |  2048 |  2048 | 2048  (0)|         |
+|  11 |        TABLE ACCESS FULL                      | EPL_POSITIONS               |      1 |      5 |      5 |00:00:00.01 |       7 |      0 |      0 |       |       |          |         |
+|  12 |     LOAD AS SELECT (CURSOR DURATION MEMORY)   | SYS_TEMP_0FD9D6C5C_147E856B |      1 |        |      0 |00:00:00.01 |       7 |      0 |      0 |  1024 |  1024 |          |         |
+|  13 |      WINDOW SORT                              |                             |      1 |    560 |    560 |00:00:00.01 |       7 |      0 |      0 |   106K|   106K|96256  (0)|         |
+|* 14 |       HASH JOIN                               |                             |      1 |    560 |    560 |00:00:00.01 |       7 |      0 |      0 |  1399K|  1399K| 1103K (0)|         |
+|  15 |        VIEW                                   |                             |      1 |      5 |      5 |00:00:00.01 |       0 |      0 |      0 |       |       |          |         |
+|  16 |         TABLE ACCESS FULL                     | SYS_TEMP_0FD9D6C5B_147E856B |      1 |      5 |      5 |00:00:00.01 |       0 |      0 |      0 |       |       |          |         |
+|  17 |        TABLE ACCESS FULL                      | EPL_PLAYERS                 |      1 |    560 |    560 |00:00:00.01 |       7 |      0 |      0 |       |       |          |         |
+|* 18 |     WINDOW SORT PUSHED RANK                   |                             |      1 |      6 |     10 |00:05:18.40 |      75M|    225K|    225K|  2048 |  2048 | 2048  (0)|         |
+|* 19 |      VIEW                                     |                             |      1 |      6 |    462K|00:04:39.95 |      75M|    225K|    225K|       |       |          |         |
+|  20 |       UNION ALL (RECURSIVE WITH) BREADTH FIRST|                             |      1 |        |   2844K|00:01:08.74 |      75M|    225K|    225K|    87M|  3203K|   77M (0)|         |
+|* 21 |        VIEW                                   |                             |      1 |      5 |      1 |00:00:00.01 |       0 |      0 |      0 |       |       |          |         |
+|  22 |         TABLE ACCESS FULL                     | SYS_TEMP_0FD9D6C5B_147E856B |      1 |      5 |      5 |00:00:00.01 |       0 |      0 |      0 |       |       |          |         |
+|  23 |        WINDOW SORT                            |                             |     12 |      1 |   2844K|00:04:14.33 |      22 |    225K|    218K|   142M|  4040K|   97M (1)|     128M|
+|* 24 |         FILTER                                |                             |     12 |        |   2844K|00:04:06.81 |       1 |    116K|    109K|       |       |          |         |
+|* 25 |          HASH JOIN OUTER                      |                             |     12 |      1 |   2954K|00:04:06.26 |       1 |    116K|    109K|   134M|  8549K|   68M (1)|     109M|
+|* 26 |           FILTER                              |                             |     12 |        |   2954K|00:04:03.07 |       1 |  60178 |  52808 |       |       |          |         |
+|* 27 |            HASH JOIN OUTER                    |                             |     12 |      1 |   2954K|00:04:02.47 |       1 |  60178 |  52808 |   126M|  8657K|   36M (1)|     101M|
+|  28 |             NESTED LOOPS                      |                             |     12 |      1 |   2954K|00:00:41.79 |       1 |   7370 |      0 |       |       |          |         |
+|  29 |              RECURSIVE WITH PUMP              |                             |     12 |        |   2844K|00:00:01.21 |       1 |   7370 |      0 |       |       |          |         |
+|* 30 |              VIEW                             |                             |   2844K|      1 |   2954K|00:03:57.78 |       0 |      0 |      0 |       |       |          |         |
+|  31 |               TABLE ACCESS FULL               | SYS_TEMP_0FD9D6C5C_147E856B |   2844K|    560 |   1593M|00:02:59.13 |       0 |      0 |      0 |       |       |          |         |
+|  32 |             BUFFER SORT (REUSE)               |                             |     11 |        |   6160 |00:00:00.01 |       0 |      0 |      0 | 73728 | 73728 |          |         |
+|  33 |              VIEW                             |                             |      1 |    560 |    560 |00:00:00.01 |       0 |      0 |      0 |       |       |          |         |
+|  34 |               TABLE ACCESS FULL               | SYS_TEMP_0FD9D6C5A_147E856B |      1 |    560 |    560 |00:00:00.01 |       0 |      0 |      0 |       |       |          |         |
+|  35 |           VIEW                                |                             |     11 |    560 |   6160 |00:00:00.01 |       0 |      0 |      0 |       |       |          |         |
+|  36 |            TABLE ACCESS FULL                  | SYS_TEMP_0FD9D6C5A_147E856B |     11 |    560 |   6160 |00:00:00.01 |       0 |      0 |      0 |       |       |          |         |
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Predicate Information (identified by operation id):
+---------------------------------------------------
+2 - filter("RNK"<=:TOP_N)
+14 - access("CRS"."ID"="POSITION")
+18 - filter(ROW_NUMBER() OVER ( ORDER BY INTERNAL_FUNCTION("TOT_VALUE") DESC ,"TOT_PRICE")<=:TOP_N)
+19 - filter("LEV"=TO_NUMBER(SYS_CONTEXT('RECURSION_CTX','SEQ_SIZE')))
+21 - filter("ID"='AL')
+24 - filter("IRK"."MAX_PRICE">="TRW"."TOT_PRICE"+"IRK"."ITEM_PRICE"+NVL("IPR"."SUM_PRICE",0))
+25 - access("IPR"."INDEX_PRICE"="IRK"."SEQ_SIZE"-"TRW"."LEV"-1)
+26 - filter("IRK"."MIN_VALUE"<="TRW"."TOT_VALUE"+"IRK"."ITEM_VALUE"+NVL("IVR"."SUM_VALUE",0))
+27 - access("IVR"."INDEX_VALUE"="IRK"."SEQ_SIZE"-"TRW"."LEV"-1)
+30 - filter((("TRW"."PATH_RNK"<="IRK"."KEEP_NUM" OR "IRK"."KEEP_NUM"=0) AND "TRW"."LEV"<"IRK"."SEQ_SIZE" AND "IRK"."MAX_ITEMS">=CASE "IRK"."CATEGORY_ID" WHEN "TRW"."CAT_ID" THEN
+"TRW"."SAME_CATS"+1 ELSE 1 END  AND "IRK"."MIN_REMAIN"<="IRK"."SEQ_SIZE"-("TRW"."LEV"+1)+LEAST(CASE "IRK"."CATEGORY_ID" WHEN "TRW"."CAT_ID" THEN "TRW"."SAME_CATS"+1 ELSE 1 END
+,"IRK"."MIN_ITEMS") AND ("IRK"."CATEGORY_ID"="TRW"."CAT_ID" OR "TRW"."SAME_CATS">="TRW"."MIN_ITEMS") AND ("IRK"."CATEGORY_ID"="TRW"."CAT_ID" OR
+"IRK"."CATEGORY_ID"=NVL("TRW"."NEXT_CAT","IRK"."CATEGORY_ID")) AND "IRK"."ITEM_RNK">="TRW"."ITEM_RNK"+1 AND "IRK"."ITEM_RNK"<="IRK"."N_ITEMS"-("IRK"."SEQ_SIZE"-"TRW"."LEV"-1)))
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.24
+rsf_irk_irs_tabs_v
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+old   2:   Item_Cat_Seqs.Init(p_keep_num      => &KEEP_NUM,
+new   2:   Item_Cat_Seqs.Init(p_keep_num      => 300,
+old   3:                      p_min_value     => &MIN_VALUE);
+new   3:                      p_min_value     => 0);
+10 running sums
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.01
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+
+Path                              Total Value Total Price  Rank
+--------------------------------- ----------- ----------- -----
+037024160463488298027452193344166        1965         889     1
+037024160264488298045027452193166                     890     2
+037024160463488298044027452193344        1963         890     3
+037024160463488298044027452193166        1962         884     4
+037024160264488298314027452193166                     885     5
+037024160272488298044027452193166                     889     6
+252024160264488298044027452193166        1959         889     7
+037024160463488298045027452193344        1958         887     8
+037024160463488298045027452193166        1957         881     9
+037024160463488298314027452328166                     886    10
+
+10 rows selected.
+
+Elapsed: 00:01:12.17
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+SQL_ID  acghnyhsz0txt, child number 13
+--------------------------------------
+SELECT /*+ gather_plan_statistics IRS_TABS */ path,        tot_value,
+tot_price,        rnk   FROM rsf_irk_irs_tabs_v  WHERE rnk <=
+:TOP_N ORDER BY rnk, tot_price
+Plan hash value: 3930817166
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Id  | Operation                                    | Name               | Starts | E-Rows | A-Rows |   A-Time   | Buffers | Reads  | Writes |  OMem |  1Mem | Used-Mem | Used-Tmp|
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT                             |                    |      1 |        |     10 |00:01:12.14 |      75M|    126K|    126K|       |       |          |         |
+|   1 |  SORT ORDER BY                               |                    |      1 |      2 |     10 |00:01:12.14 |      75M|    126K|    126K|  2048 |  2048 | 2048  (0)|         |
+|*  2 |   VIEW                                       | RSF_IRK_IRS_TABS_V |      1 |      2 |     10 |00:01:12.14 |      75M|    126K|    126K|       |       |          |         |
+|*  3 |    WINDOW SORT PUSHED RANK                   |                    |      1 |      2 |     10 |00:01:12.14 |      75M|    126K|    126K|  2048 |  2048 | 2048  (0)|         |
+|*  4 |     VIEW                                     |                    |      1 |      2 |    462K|00:01:11.89 |      75M|    126K|    126K|       |       |          |         |
+|   5 |      UNION ALL (RECURSIVE WITH) BREADTH FIRST|                    |      1 |        |   2844K|00:01:05.77 |      75M|    126K|    126K|    82M|  3115K|   80M (0)|         |
+|*  6 |       INDEX UNIQUE SCAN                      | SYS_IOT_TOP_177213 |      1 |      1 |      1 |00:00:00.01 |       2 |      0 |      0 |       |       |          |         |
+|   7 |       WINDOW SORT                            |                    |     12 |      1 |   2844K|00:00:13.36 |   14031 |    126K|    118K|   154M|  4197K|   97M (1)|     139M|
+|   8 |        NESTED LOOPS                          |                    |     12 |      1 |   2844K|00:00:03.15 |   14011 |   8744 |      0 |       |       |          |         |
+|*  9 |         HASH JOIN OUTER                      |                    |     12 |      1 |  12344 |00:00:00.52 |       4 |   8744 |      0 |  1087K|  1087K|  858K (0)|         |
+|  10 |          RECURSIVE WITH PUMP                 |                    |     12 |        |  12344 |00:00:01.38 |       1 |   8744 |      0 |       |       |          |         |
+|  11 |          BUFFER SORT (REUSE)                 |                    |     11 |        |    110 |00:00:00.01 |       3 |      0 |      0 | 73728 | 73728 |          |         |
+|  12 |           TABLE ACCESS FULL                  | ITEM_RUNNING_SUMS  |      1 |     10 |     10 |00:00:00.01 |       3 |      0 |      0 |       |       |          |         |
+|* 13 |         INDEX RANGE SCAN                     | SYS_IOT_TOP_177213 |  12344 |      1 |   2844K|00:00:02.23 |   14007 |      0 |      0 |       |       |          |         |
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Predicate Information (identified by operation id):
+---------------------------------------------------
+2 - filter("RNK"<=:TOP_N)
+3 - filter(ROW_NUMBER() OVER ( ORDER BY INTERNAL_FUNCTION("TOT_VALUE") DESC ,"TOT_PRICE")<=:TOP_N)
+4 - filter("LEV"="SEQ_SIZE")
+6 - access("ITEM_RNK"=1)
+9 - access("IRS"."SLOT_INDEX"="TRW"."SEQ_SIZE"-"TRW"."LEV"-1)
+13 - access("IRK"."ITEM_RNK">="TRW"."ITEM_RNK"+1)
+filter(("IRK"."ITEM_RNK"<="IRK"."N_ITEMS"-("TRW"."SEQ_SIZE"-"TRW"."LEV"-1) AND "IRK"."MAX_ITEMS">=CASE "IRK"."CAT_ID" WHEN "TRW"."CAT_ID" THEN "TRW"."SAME_CATS"+1
+ELSE 1 END  AND "TRW"."TOT_PRICE"+"IRK"."ITEM_PRICE"+NVL("IRS"."SUM_PRICE",0)<=TO_NUMBER(SYS_CONTEXT('RECURSION_CTX','MAX_PRICE')) AND
+"TRW"."TOT_VALUE"+"IRK"."ITEM_VALUE"+NVL("IRS"."SUM_VALUE",0)>=TO_NUMBER(SYS_CONTEXT('RECURSION_CTX','MIN_VALUE')) AND
+"IRK"."MIN_REMAIN"<="TRW"."SEQ_SIZE"-("TRW"."LEV"+1)+LEAST(CASE "IRK"."CAT_ID" WHEN "TRW"."CAT_ID" THEN "TRW"."SAME_CATS"+1 ELSE 1 END ,"IRK"."MIN_ITEMS") AND
+("IRK"."CAT_ID"="TRW"."CAT_ID" OR "TRW"."SAME_CATS">="TRW"."MIN_ITEMS") AND ("IRK"."CAT_ID"="TRW"."CAT_ID" OR "IRK"."CAT_ID"=NVL("TRW"."NEXT_CAT_ID","IRK"."CAT_ID"))))
+Note
+-----
+- dynamic statistics used: dynamic sampling (level=2)
+- statistics feedback used for this statement
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.25
+rsf_irk_tab_where_fun_v_ts - timed
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+old   2:   Item_Cat_Seqs.Init(p_keep_num      => &KEEP_NUM,
+new   2:   Item_Cat_Seqs.Init(p_keep_num      => 300,
+old   3:                      p_min_value     => &MIN_VALUE,
+new   3:                      p_min_value     => 0,
+10 running sums
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+
+Path                              Total Value Total Price  Rank
+--------------------------------- ----------- ----------- -----
+037024160463488298027452193344166        1965         889     1
+037024160264488298045027452193166                     890     2
+037024160463488298044027452193344        1963         890     3
+037024160463488298044027452193166        1962         884     4
+037024160264488298314027452193166                     885     5
+037024160272488298044027452193166                     889     6
+252024160264488298044027452193166        1959         889     7
+037024160463488298045027452193344        1958         887     8
+037024160463488298045027452193166        1957         881     9
+037024160463488298314027452328166                     886    10
+
+10 rows selected.
+
+Elapsed: 00:02:12.56
+Timer Set: Init, KEEP_NUM-MIN_VALUE: 300-0, Constructed at 11 Jun 2024 00:22:46, written at 00:24:58
+====================================================================================================
+Timer                Elapsed         CPU       Calls       Ela/Call       CPU/Call
+----------------  ----------  ----------  ----------  -------------  -------------
+init_Common             0.00        0.00           1        0.00200        0.00000
+pop_Items_Ranked        0.01        0.00           1        0.00500        0.00000
+Record_Is_Ok - Y       81.25       78.05     2844493        0.00003        0.00003
+Record_Is_Ok - N       51.28       47.19     1302942        0.00004        0.00004
+(Other)                 0.05        0.04           1        0.05300        0.04000
+----------------  ----------  ----------  ----------  -------------  -------------
+Total                 132.58      125.28     4147438        0.00003        0.00003
+----------------  ----------  ----------  ----------  -------------  -------------
+[Timer timed (per call in ms): Elapsed: 0.01075, CPU: 0.01183]
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.11
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+SQL_ID  48f1srk5h2btw, child number 9
+-------------------------------------
+SELECT /*+ gather_plan_statistics WHERE-TIMED_FUN */ path,
+tot_value,        tot_price,        rnk   FROM
+rsf_irk_tab_where_fun_ts_v  WHERE rnk <= :TOP_N ORDER BY rnk, tot_price
+Plan hash value: 3333612002
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Id  | Operation                                    | Name                       | Starts | E-Rows | A-Rows |   A-Time   | Buffers |  OMem |  1Mem | Used-Mem |
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT                             |                            |      1 |        |     10 |00:00:19.44 |    8732K|       |       |          |
+|   1 |  SORT ORDER BY                               |                            |      1 |      2 |     10 |00:00:19.44 |    8732K|  2048 |  2048 | 2048  (0)|
+|*  2 |   VIEW                                       | RSF_IRK_TAB_WHERE_FUN_TS_V |      1 |      2 |     10 |00:00:19.44 |    8732K|       |       |          |
+|*  3 |    WINDOW SORT PUSHED RANK                   |                            |      1 |      2 |     10 |00:00:19.44 |    8732K|  2048 |  2048 | 2048  (0)|
+|*  4 |     VIEW                                     |                            |      1 |      2 |  73994 |00:00:18.12 |    8732K|       |       |          |
+|   5 |      UNION ALL (RECURSIVE WITH) BREADTH FIRST|                            |      1 |        |    478K|00:00:09.46 |    8732K|    14M|  1443K|   12M (0)|
+|*  6 |       INDEX UNIQUE SCAN                      | SYS_IOT_TOP_177213         |      1 |      1 |      1 |00:00:00.01 |       2 |       |       |          |
+|   7 |       WINDOW SORT                            |                            |     12 |      1 |    478K|00:00:11.73 |    2835 |    25M|  1851K|   23M (0)|
+|   8 |        NESTED LOOPS                          |                            |     12 |      1 |    478K|00:00:11.26 |    2835 |       |       |          |
+|   9 |         RECURSIVE WITH PUMP                  |                            |     12 |        |   2494 |00:00:00.01 |       0 |       |       |          |
+|* 10 |         INDEX RANGE SCAN                     | SYS_IOT_TOP_177213         |   2494 |      1 |    478K|00:00:10.23 |    2835 |       |       |          |
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Predicate Information (identified by operation id):
+---------------------------------------------------
+2 - filter("RNK"<=:TOP_N)
+3 - filter(ROW_NUMBER() OVER ( ORDER BY INTERNAL_FUNCTION("TOT_VALUE") DESC ,"TOT_PRICE")<=:TOP_N)
+4 - filter("LEV"="SEQ_SIZE")
+6 - access("ITEM_RNK"=1)
+10 - access("IRK"."ITEM_RNK">="TRW"."ITEM_RNK"+1)
+filter(("IRK"."ITEM_RNK"<="IRK"."N_ITEMS"-("TRW"."SEQ_SIZE"-"TRW"."LEV"-1) AND
+"ITEM_CAT_SEQS"."RECORD_IS_OK_TS"(INTERNAL_FUNCTION("TRW"."LEV"),"TRW"."TOT_VALUE"+"IRK"."ITEM_VALUE","TRW"."TOT_PRICE"+"IRK"."ITEM_PRICE","TRW"."CAT_ID
+","IRK"."CAT_ID",TO_CHAR("TRW"."SAME_CATS"),"TRW"."NEXT_CAT_ID",INTERNAL_FUNCTION("TRW"."MIN_ITEMS"),INTERNAL_FUNCTION("IRK"."MIN_ITEMS"),INTERNAL_FUNCT
+ION("IRK"."MAX_ITEMS"),INTERNAL_FUNCTION("IRK"."MIN_REMAIN"))='Y'))
+Note
+-----
+- dynamic statistics used: dynamic sampling (level=2)
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.22
+rsf_irk_tab_where_fun_v - untimed
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+old   2:   Item_Cat_Seqs.Init(p_keep_num      => &KEEP_NUM,
+new   2:   Item_Cat_Seqs.Init(p_keep_num      => 300,
+old   3:                      p_min_value     => &MIN_VALUE);
+new   3:                      p_min_value     => 0);
+10 running sums
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+
+Path                              Total Value Total Price  Rank
+--------------------------------- ----------- ----------- -----
+037024160463488298027452193344166        1965         889     1
+037024160264488298045027452193166                     890     2
+037024160463488298044027452193344        1963         890     3
+037024160463488298044027452193166        1962         884     4
+037024160264488298314027452193166                     885     5
+037024160272488298044027452193166                     889     6
+252024160264488298044027452193166        1959         889     7
+037024160463488298045027452193344        1958         887     8
+037024160463488298045027452193166        1957         881     9
+037024160463488298314027452328166                     886    10
+
+10 rows selected.
+
+Elapsed: 00:01:22.28
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+SQL_ID  d8p2m6zudgnq5, child number 9
+-------------------------------------
+SELECT /*+ gather_plan_statistics WHERE_FUN */ path,        tot_value,
+tot_price,        rnk   FROM rsf_irk_tab_where_fun_v  WHERE rnk
+<= :TOP_N ORDER BY rnk, tot_price
+Plan hash value: 57043923
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Id  | Operation                                    | Name                    | Starts | E-Rows | A-Rows |   A-Time   | Buffers |  OMem |  1Mem | Used-Mem |
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT                             |                         |      1 |        |     10 |00:00:10.68 |    8732K|       |       |          |
+|   1 |  SORT ORDER BY                               |                         |      1 |      2 |     10 |00:00:10.68 |    8732K|  2048 |  2048 | 2048  (0)|
+|*  2 |   VIEW                                       | RSF_IRK_TAB_WHERE_FUN_V |      1 |      2 |     10 |00:00:10.68 |    8732K|       |       |          |
+|*  3 |    WINDOW SORT PUSHED RANK                   |                         |      1 |      2 |     10 |00:00:10.68 |    8732K|  2048 |  2048 | 2048  (0)|
+|*  4 |     VIEW                                     |                         |      1 |      2 |  73994 |00:00:10.43 |    8732K|       |       |          |
+|   5 |      UNION ALL (RECURSIVE WITH) BREADTH FIRST|                         |      1 |        |    478K|00:00:08.29 |    8732K|    14M|  1443K|   12M (0)|
+|*  6 |       INDEX UNIQUE SCAN                      | SYS_IOT_TOP_177213      |      1 |      1 |      1 |00:00:00.01 |       2 |       |       |          |
+|   7 |       WINDOW SORT                            |                         |     12 |      1 |    478K|00:00:03.11 |    2835 |    25M|  1851K|   23M (0)|
+|   8 |        NESTED LOOPS                          |                         |     12 |      1 |    478K|00:00:02.54 |    2835 |       |       |          |
+|   9 |         RECURSIVE WITH PUMP                  |                         |     12 |        |   2494 |00:00:00.01 |       0 |       |       |          |
+|* 10 |         INDEX RANGE SCAN                     | SYS_IOT_TOP_177213      |   2494 |      1 |    478K|00:00:02.16 |    2835 |       |       |          |
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+Predicate Information (identified by operation id):
+---------------------------------------------------
+2 - filter("RNK"<=:TOP_N)
+3 - filter(ROW_NUMBER() OVER ( ORDER BY INTERNAL_FUNCTION("TOT_VALUE") DESC ,"TOT_PRICE")<=:TOP_N)
+4 - filter("LEV"="SEQ_SIZE")
+6 - access("ITEM_RNK"=1)
+10 - access("IRK"."ITEM_RNK">="TRW"."ITEM_RNK"+1)
+filter(("IRK"."ITEM_RNK"<="IRK"."N_ITEMS"-("TRW"."SEQ_SIZE"-"TRW"."LEV"-1) AND
+"ITEM_CAT_SEQS"."RECORD_IS_OK"(INTERNAL_FUNCTION("TRW"."LEV"),"TRW"."TOT_VALUE"+"IRK"."ITEM_VALUE","TRW"."TOT_PRICE"+"IRK"."ITEM_PRICE","TRW"."CAT_ID
+","IRK"."CAT_ID",TO_CHAR("TRW"."SAME_CATS"),"TRW"."NEXT_CAT_ID",INTERNAL_FUNCTION("TRW"."MIN_ITEMS"),INTERNAL_FUNCTION("IRK"."MIN_ITEMS"),INTERNAL_FU
+NCTION("IRK"."MAX_ITEMS"),INTERNAL_FUNCTION("IRK"."MIN_REMAIN"))='Y'))
+Note
+-----
+- dynamic statistics used: dynamic sampling (level=2)
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.22
+Timer Set: Item_Cat_Seqs_RSF, Constructed at 10 Jun 2024 23:55:22, written at 00:26:21
+======================================================================================
+Timer                          Elapsed         CPU       Calls       Ela/Call       CPU/Call
+--------------------------  ----------  ----------  ----------  -------------  -------------
+rsf_sql_v                      1252.52     1234.32           1     1252.52200     1234.32000
+rsf_sql_material_v              318.43      305.14           1      318.42600      305.14000
+Item_Cat_Seqs.Init                0.03        0.00           3        0.01000        0.00000
+rsf_irk_irs_tabs_v               72.18       63.97           1       72.18400       63.97000
+rsf_irk_tab_where_fun_ts_v      132.68      125.39           1      132.67700      125.39000
+rsf_irk_tab_where_fun_v          82.30       75.52           1       82.29500       75.52000
+(Other)                           1.19        1.11           1        1.19400        1.11000
+--------------------------  ----------  ----------  ----------  -------------  -------------
+Total                          1859.33     1805.45           9      206.59200      200.60556
+--------------------------  ----------  ----------  ----------  -------------  -------------
+[Timer timed (per call in ms): Elapsed: 0.00885, CPU: 0.00973]
+
+PL/SQL procedure successfully completed.
+
+
+'END:'||TO_CHAR(SYSDATE,'DD-MON-YY
+----------------------------------
+End: 11-JUN-2024 00:26:21
+

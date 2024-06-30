@@ -1,0 +1,13 @@
+Group,Field,Value
+Category,Id,C1
+Category,Min#,0
+Category,Max#,2
+Item,Id,I1
+Item,Category,C1
+Item,Price,5
+Item,Value,5
+Scalars,Size,2
+Scalars,Max Price,20
+Scalars,Top N,3
+Scalars,Min Value,0
+Scalars,Keep#,1

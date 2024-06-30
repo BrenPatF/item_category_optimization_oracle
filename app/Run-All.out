@@ -1,0 +1,120 @@
+20-Jun-24 02:00:03
+
+
+    Directory: C:\Users\Brend\Dropbox\Home\WIP\item_category_optimization_oracle\app
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+d-----        20/06/2024     02:00                results_15                                                           
+sml
+newCmd = @..\item_seqs sml MP 
+MP
+newCmd = @..\item_seqs sml MC 
+MC
+newCmd = @..\item_seqs sml SP 
+SP
+newCmd = @..\item_seqs sml SC 
+SC
+newCmd = @..\item_cat_seqs sml 10 0
+10
+0
+newCmd = @..\item_cat_seqs_rsf sml 10 0
+10
+0
+newCmd = @..\item_cat_seqs_loop sml 10 3
+10
+3
+@..\c_temp_tables
+@..\views_sml
+@..\item_seqs sml MP 
+@..\item_seqs sml MC 
+@..\item_seqs sml SP 
+@..\item_seqs sml SC 
+@..\item_cat_seqs sml 10 0
+@..\item_cat_seqs_rsf sml 10 0
+@..\item_cat_seqs_pv_rsf
+@..\item_cat_seqs_loop sml 10 3
+
+bra
+newCmd = @..\item_cat_seqs bra 10 0
+10
+0
+newCmd = @..\item_cat_seqs bra 100 0
+100
+0
+newCmd = @..\item_cat_seqs bra 100 10748
+100
+10748
+newCmd = @..\item_cat_seqs bra 0 10748
+0
+10748
+newCmd = @..\item_cat_seqs_rsf bra 10 0
+10
+0
+newCmd = @..\item_cat_seqs_rsf bra 100 0
+100
+0
+newCmd = @..\item_cat_seqs_rsf bra 100 10748
+100
+10748
+newCmd = @..\item_cat_seqs_rsf bra 0 10748
+0
+10748
+newCmd = @..\item_cat_seqs_loop bra 10 3
+10
+3
+@..\c_temp_tables
+@..\views_bra
+@..\item_cat_seqs bra 10 0
+@..\item_cat_seqs bra 100 0
+@..\item_cat_seqs bra 100 10748
+@..\item_cat_seqs bra 0 10748
+@..\item_cat_seqs_rsf bra 10 0
+@..\item_cat_seqs_rsf bra 100 0
+@..\item_cat_seqs_rsf bra 100 10748
+@..\item_cat_seqs_rsf bra 0 10748
+@..\item_cat_seqs_loop bra 10 3
+
+eng
+newCmd = @..\item_cat_seqs eng 50 0
+50
+0
+newCmd = @..\item_cat_seqs eng 300 0
+300
+0
+newCmd = @..\item_cat_seqs eng 300 1952
+300
+1952
+newCmd = @..\item_cat_seqs eng 0 1952
+0
+1952
+newCmd = @..\item_cat_seqs_rsf eng 50 0
+50
+0
+newCmd = @..\item_cat_seqs_rsf eng 300 0
+300
+0
+newCmd = @..\item_cat_seqs_rsf eng 300 1952
+300
+1952
+newCmd = @..\item_cat_seqs_rsf eng 0 1952
+0
+1952
+newCmd = @..\item_cat_seqs_loop eng 50 3
+50
+3
+@..\c_temp_tables
+@..\views_eng
+@..\item_cat_seqs eng 50 0
+@..\item_cat_seqs eng 300 0
+@..\item_cat_seqs eng 300 1952
+@..\item_cat_seqs eng 0 1952
+@..\item_cat_seqs_rsf eng 50 0
+@..\item_cat_seqs_rsf eng 300 0
+@..\item_cat_seqs_rsf eng 300 1952
+@..\item_cat_seqs_rsf eng 0 1952
+@..\item_cat_seqs_loop eng 50 3
+
+
+

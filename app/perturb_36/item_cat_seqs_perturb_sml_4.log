@@ -1,0 +1,161 @@
+
+Database             Time                 Version
+-------------------- -------------------- ------------------------------
+Start: ORCL          14-JUN-2024 10:37:01 Version 21.3.0.0.0
+
+Truncate paths
+
+Table truncated.
+
+old   2:     :MAX_PRICE := &MAX_PRICE;
+new   2:     :MAX_PRICE := 4;
+
+PL/SQL procedure successfully completed.
+
+Recompile item_cat_seqs.pkb
+
+Package body created.
+
+No errors.
+Just set context values: SEQ_SIZE = 3, MAX_PRICE = 4, ITEM_WIDTH = 1, TOP_N = 3
+Previously set context values: SEQ_TYPE = , MIN_VALUE = , KEEP_NUM =
+
+PL/SQL procedure successfully completed.
+
+
+PL/SQL procedure successfully completed.
+
+Pop_Table_Iterate
+2 running sums
+Timer Set: Pop_Table_Iterate, Constructed at 14 Jun 2024 10:37:01, written at 10:37:01
+======================================================================================
+Timer                  Elapsed         CPU       Calls       Ela/Call       CPU/Call
+------------------  ----------  ----------  ----------  -------------  -------------
+Initial delete (0)        0.01        0.00           1        0.00500        0.00000
+Initial insert (1)        0.00        0.00           1        0.00000        0.00000
+Insert paths 1 (2)        0.00        0.00           1        0.00000        0.00000
+Delete paths 1 (1)        0.00        0.00           1        0.00000        0.00000
+Insert paths 2 (4)        0.00        0.00           1        0.00100        0.00000
+Delete paths 2 (2)        0.00        0.00           1        0.00000        0.00000
+Insert paths 3 (2)        0.00        0.00           1        0.00000        0.00000
+Delete paths 3 (4)        0.00        0.00           1        0.00000        0.00000
+(Other)                   0.00        0.00           1        0.00000        0.00000
+------------------  ----------  ----------  ----------  -------------  -------------
+Total                     0.01        0.00           9        0.00067        0.00000
+------------------  ----------  ----------  ----------  -------------  -------------
+[Timer timed (per call in ms): Elapsed: 0.01190, CPU: 0.00714]
+Timer Set: Pop_Table_Iterate, Constructed at 14 Jun 2024 10:37:01, written at 10:37:01
+======================================================================================
+Timer                  Elapsed         CPU       Calls       Ela/Call       CPU/Call
+------------------  ----------  ----------  ----------  -------------  -------------
+Initial delete (2)        0.00        0.00           1        0.00000        0.00000
+Initial insert (1)        0.00        0.00           1        0.00000        0.00000
+Insert paths 1 (2)        0.00        0.00           1        0.00000        0.00000
+Delete paths 1 (1)        0.00        0.00           1        0.00000        0.00000
+Insert paths 2 (4)        0.00        0.00           1        0.00100        0.00000
+Delete paths 2 (2)        0.00        0.00           1        0.00000        0.00000
+Insert paths 3 (2)        0.00        0.00           1        0.00000        0.00000
+Delete paths 3 (4)        0.00        0.00           1        0.00000        0.00000
+(Other)                   0.00        0.00           1        0.00000        0.00000
+------------------  ----------  ----------  ----------  -------------  -------------
+Total                     0.00        0.00           9        0.00011        0.00000
+------------------  ----------  ----------  ----------  -------------  -------------
+[Timer timed (per call in ms): Elapsed: 0.01554, CPU: 0.00308]
+Timer Set: Pop_Table_Iterate, Constructed at 14 Jun 2024 10:37:01, written at 10:37:01
+======================================================================================
+Timer                  Elapsed         CPU       Calls       Ela/Call       CPU/Call
+------------------  ----------  ----------  ----------  -------------  -------------
+Initial delete (2)        0.00        0.00           1        0.00000        0.00000
+Initial insert (1)        0.00        0.00           1        0.00000        0.00000
+Insert paths 1 (2)        0.00        0.00           1        0.00100        0.00000
+Delete paths 1 (1)        0.00        0.00           1        0.00000        0.00000
+Insert paths 2 (4)        0.00        0.00           1        0.00000        0.00000
+Delete paths 2 (2)        0.00        0.00           1        0.00000        0.00000
+Insert paths 3 (2)        0.00        0.00           1        0.00000        0.00000
+Delete paths 3 (4)        0.00        0.00           1        0.00000        0.00000
+(Other)                   0.00        0.00           1        0.00000        0.00000
+------------------  ----------  ----------  ----------  -------------  -------------
+Total                     0.00        0.00           9        0.00011        0.00000
+------------------  ----------  ----------  ----------  -------------  -------------
+[Timer timed (per call in ms): Elapsed: 0.01408, CPU: 0.00845]
+Timer Set: Pop_Table_Iterate, Constructed at 14 Jun 2024 10:37:01, written at 10:37:01
+======================================================================================
+Timer                  Elapsed         CPU       Calls       Ela/Call       CPU/Call
+------------------  ----------  ----------  ----------  -------------  -------------
+Initial delete (2)        0.00        0.00           1        0.00000        0.00000
+Initial insert (1)        0.00        0.00           1        0.00000        0.00000
+Insert paths 1 (2)        0.00        0.00           1        0.00000        0.00000
+Delete paths 1 (1)        0.00        0.00           1        0.00000        0.00000
+Insert paths 2 (4)        0.00        0.00           1        0.00100        0.00000
+Delete paths 2 (2)        0.00        0.00           1        0.00000        0.00000
+Insert paths 3 (2)        0.00        0.00           1        0.00000        0.00000
+Delete paths 3 (4)        0.00        0.00           1        0.00000        0.00000
+(Other)                   0.00        0.00           1        0.00000        0.00000
+------------------  ----------  ----------  ----------  -------------  -------------
+Total                     0.00        0.00           9        0.00011        0.00000
+------------------  ----------  ----------  ----------  -------------  -------------
+[Timer timed (per call in ms): Elapsed: 0.01464, CPU: 0.00870]
+Timer Set: Iteratively_Refine_Iterate, Constructed at 14 Jun 2024 10:37:01, written at 10:37:01
+===============================================================================================
+Timer                                           Elapsed         CPU       Calls       Ela/Call       CPU/Call
+-------------------------------------------  ----------  ----------  ----------  -------------  -------------
+PTI 1: MIN_VALUE / KEEP_NUM = 0 / 10               0.11        0.06           1        0.10600        0.06000
+SELECT 1: MIN_VALUE / KEEP_NUM = 0 / 10            0.00        0.00           1        0.00100        0.00000
+PTI 2: MIN_VALUE / KEEP_NUM = 0 / 30               0.10        0.02           1        0.10300        0.02000
+SELECT 2: MIN_VALUE / KEEP_NUM = 0 / 30            0.00        0.00           1        0.00000        0.00000
+PTI 3: MIN_VALUE / KEEP_NUM = 0 / 90               0.10        0.06           1        0.10300        0.06000
+SELECT 3: MIN_VALUE / KEEP_NUM = 0 / 90            0.00        0.00           1        0.00000        0.00000
+PTI (final): MIN_VALUE / KEEP_NUM = 0 / 270        0.10        0.06           1        0.10300        0.06000
+(Other)                                            0.00        0.00           1        0.00000        0.00000
+-------------------------------------------  ----------  ----------  ----------  -------------  -------------
+Total                                              0.42        0.20           8        0.05200        0.02500
+-------------------------------------------  ----------  ----------  ----------  -------------  -------------
+[Timer timed (per call in ms): Elapsed: 0.01316, CPU: 0.01053]
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.52
+Iteratively_Refine_Iterate - 10'th to 1'st highest values, then corresponding prices
+
+Summary
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+4, , , , , , , , , 9, 11; Prices: , , , , , , , , 4, 4; 0 : Values, Prices, Seconds
+
+Elapsed: 00:00:00.00
+Iteratively_Refine_Iterate - Best and Worst
+
+Summary
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+4, 11, 9, 0 - BEST (V, P): (11, 4); WORST (V, P): (9, 4); Seconds: 0
+
+Elapsed: 00:00:00.00
+Iteratively_Refine_Iterate
+
+Path Total Value Total Price  Rank
+---- ----------- ----------- -----
+145           11           4     1
+214            9           4     2
+
+Elapsed: 00:00:00.00
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+Timer Set: Item_Cat_Seqs_Loop, Constructed at 14 Jun 2024 10:37:01, written at 10:37:01
+=======================================================================================
+Timer                                       Elapsed         CPU       Calls       Ela/Call       CPU/Call
+---------------------------------------  ----------  ----------  ----------  -------------  -------------
+Iteratively_Refine_Iterate - path level        0.53        0.28           1        0.52800        0.28000
+(Other)                                        0.00        0.00           1        0.00100        0.00000
+---------------------------------------  ----------  ----------  ----------  -------------  -------------
+Total                                          0.53        0.28           2        0.26450        0.14000
+---------------------------------------  ----------  ----------  ----------  -------------  -------------
+[Timer timed (per call in ms): Elapsed: 0.01087, CPU: 0.00761]
+
+PL/SQL procedure successfully completed.
+
+
+'END:'||TO_CHAR(SYSDATE,'DD-MON-YY
+----------------------------------
+End: 14-JUN-2024 10:37:01
+

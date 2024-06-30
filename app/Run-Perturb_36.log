@@ -1,0 +1,144 @@
+﻿item_cat_seqs_perturb_sml_3.log
+
+3, , , , , , , , , , ; Prices: , , , , , , , , , ; 1 : Values, Prices, Seconds
+
+
+item_cat_seqs_perturb_sml_4.log
+
+4, , , , , , , , , 9, 11; Prices: , , , , , , , , 4, 4; 0 : Values, Prices, Seconds
+
+
+item_cat_seqs_perturb_sml_5.log
+
+5, , , , , , , , 10, 11, 12; Prices: , , , , , , , 5, 4, 5; 0 : Values, Prices, Seconds
+
+
+item_cat_seqs_perturb_sml_6.log
+
+6, , , , , , , , 11, 12, 13; Prices: , , , , , , , 4, 5, 6; 0 : Values, Prices, Seconds
+
+
+item_cat_seqs_perturb_sml_7.log
+
+7, , , , , , , , 11, 12, 13; Prices: , , , , , , , 4, 5, 6; 1 : Values, Prices, Seconds
+
+
+item_cat_seqs_perturb_bra_8000.log
+
+8000, , , , , , , , , , ; Prices: , , , , , , , , , ; 1 : Values, Prices, Seconds
+
+
+item_cat_seqs_perturb_bra_10000.log
+
+10000, 8548, 8548, 8556, 8568, 8569, 8576, 8586, 8596, 8609, 8651; Prices: 9950, 9912, 9843, 9935, 9958, 9897, 9779, 
+9997, 9906, 9996; 1 : Values, Prices, Seconds
+
+
+item_cat_seqs_perturb_bra_12000.log
+
+12000, 9035, 9041, 9044, 9068, 9095, 9118, 9174, 9191, 9194, 9201; Prices: 11946, 11951, 11943, 11983, 11923, 11927, 
+11949, 11770, 11972, 11988; 2 : Values, Prices, Seconds
+
+
+item_cat_seqs_perturb_bra_14000.log
+
+14000, 9724, 9730, 9731, 9738, 9745, 9747, 9754, 9806, 9813, 9914; Prices: 13506, 13619, 13256, 13941, 13691, 13905, 
+13655, 13930, 13680, 13890; 2 : Values, Prices, Seconds
+
+
+item_cat_seqs_perturb_bra_16000.log
+
+16000, 10128, 10130, 10131, 10135, 10154, 10193, 10213, 10215, 10230, 10233; Prices: 15896, 15780, 15417, 15646, 
+15816, 15926, 15841, 15894, 15662, 15864; 1 : Values, Prices, Seconds
+
+
+item_cat_seqs_perturb_bra_18000.log
+
+18000, 10642, 10643, 10663, 10674, 10692, 10733, 10740, 10766, 10772, 10790; Prices: 17556, 17374, 17793, 17834, 
+17215, 17792, 17542, 17948, 17820, 17201; 1 : Values, Prices, Seconds
+
+
+item_cat_seqs_perturb_bra_20000.log
+
+20000, 10790, 10807, 10825, 10825, 10831, 10833, 10833, 10905, 10923, 10923; Prices: 17201, 18809, 19041, 18190, 
+19608, 19845, 18994, 18795, 19027, 18176; 1 : Values, Prices, Seconds
+
+
+item_cat_seqs_perturb_bra_22000.log
+
+22000, 10833, 10833, 10845, 10845, 10865, 10883, 10883, 10905, 10923, 10923; Prices: 19845, 18994, 20931, 20080, 
+20782, 21014, 20163, 18795, 19027, 18176; 1 : Values, Prices, Seconds
+
+
+item_cat_seqs_perturb_bra_24000.log
+
+24000, 10833, 10833, 10845, 10845, 10865, 10883, 10883, 10905, 10923, 10923; Prices: 19845, 18994, 20931, 20080, 
+20782, 21014, 20163, 18795, 19027, 18176; 1 : Values, Prices, Seconds
+
+
+item_cat_seqs_perturb_eng_500.log
+
+500, , , , , , , , , , ; Prices: , , , , , , , , , ; 10 : Values, Prices, Seconds
+
+
+item_cat_seqs_perturb_eng_600.log
+
+600, 1314, 1315, 1318, 1319, 1322, 1324, 1327, 1329, 1329, 1336; Prices: 600, 600, 600, 600, 600, 600, 599, 600, 600, 
+600; 7 : Values, Prices, Seconds
+
+
+item_cat_seqs_perturb_eng_650.log
+
+650, 1494, 1495, 1496, 1496, 1497, 1498, 1500, 1500, 1502, 1506; Prices: 650, 649, 650, 649, 650, 650, 650, 650, 649, 
+650; 4 : Values, Prices, Seconds
+
+
+item_cat_seqs_perturb_eng_700.log
+
+700, 1587, 1587, 1588, 1588, 1589, 1589, 1591, 1592, 1593, 1594; Prices: 700, 699, 700, 699, 700, 700, 700, 700, 700, 
+700; 4 : Values, Prices, Seconds
+
+
+item_cat_seqs_perturb_eng_750.log
+
+750, 1718, 1718, 1718, 1719, 1719, 1720, 1722, 1722, 1723, 1729; Prices: 750, 749, 748, 750, 747, 750, 749, 748, 750, 
+750; 6 : Values, Prices, Seconds
+
+
+item_cat_seqs_perturb_eng_800.log
+
+800, 1819, 1819, 1819, 1822, 1823, 1823, 1824, 1824, 1826, 1829; Prices: 800, 799, 799, 797, 798, 796, 799, 799, 800, 
+798; 6 : Values, Prices, Seconds
+
+
+item_cat_seqs_perturb_eng_850.log
+
+850, 1906, 1908, 1910, 1910, 1912, 1912, 1914, 1914, 1915, 1919; Prices: 850, 849, 850, 849, 850, 845, 850, 847, 850, 
+846; 5 : Values, Prices, Seconds
+
+
+item_cat_seqs_perturb_eng_900.log
+
+900, 1965, 1965, 1965, 1966, 1966, 1968, 1968, 1970, 1971, 1973; Prices: 894, 890, 889, 900, 896, 900, 899, 893, 899, 
+898; 4 : Values, Prices, Seconds
+
+
+item_cat_seqs_perturb_eng_950.log
+
+950, 1990, 1990, 1992, 1992, 1994, 1994, 1995, 1995, 1997, 1998; Prices: 936, 931, 935, 922, 934, 921, 940, 927, 944, 
+940; 3 : Values, Prices, Seconds
+
+
+item_cat_seqs_perturb_eng_1000.log
+
+1000, 1992, 1992, 1994, 1994, 1995, 1995, 1997, 1997, 1998, 1998; Prices: 935, 922, 934, 921, 940, 927, 957, 944, 953, 
+940; 4 : Values, Prices, Seconds
+
+
+item_cat_seqs_perturb_eng_1100.log
+
+1100, 1992, 1992, 1994, 1994, 1995, 1995, 1997, 1997, 1998, 1998; Prices: 935, 922, 934, 921, 940, 927, 957, 944, 953, 
+940; 4 : Values, Prices, Seconds
+
+
+Total time taken: 77 seconds

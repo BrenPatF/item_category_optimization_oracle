@@ -1,0 +1,567 @@
+{
+  "meta": {
+    "title": "Best Combis - Pre-Emptive - Item Categories",
+    "delimiter": "|",
+    "inp": {
+      "Category": [
+        "Id",
+        "Min#",
+        "Max#"
+      ],
+      "Item": [
+        "Id",
+        "Category",
+        "Price",
+        "Value"
+      ],
+      "Scalars": [
+        "Size",
+        "Max Price",
+        "Top N",
+        "Min Value",
+        "Keep#"
+      ]
+    },
+    "out": {
+      "Solution": [
+        "Path",
+        "Total Price",
+        "Total Value"
+      ]
+    }
+  },
+  "scenarios": {
+    "Choose 1 / n": {
+      "active_yn": "Y",
+      "category_set": "Choose Range (r / n)",
+      "inp": {
+        "Category": [
+          "C1|0|2",
+          "AL|1|1"
+        ],
+        "Item": [
+          "I1|C1|5|5",
+          "I2|C1|6|6"
+        ],
+        "Scalars": [
+          "1|20|1|0|10"
+        ]
+      },
+      "out": {
+        "Solution": [
+          "I2|6|6"
+        ]
+      }
+    },
+    "Choose r / n (r < n)": {
+      "active_yn": "Y",
+      "category_set": "Choose Range (r / n)",
+      "inp": {
+        "Category": [
+          "C1|0|2",
+          "AL|2|2"
+        ],
+        "Item": [
+          "I1|C1|5|15",
+          "I2|C1|6|16",
+          "I3|C1|7|17"
+        ],
+        "Scalars": [
+          "2|20|3|0|10"
+        ]
+      },
+      "out": {
+        "Solution": [
+          "I2I3|13|33",
+          "I1I3|12|32",
+          "I1I2|11|31"
+        ]
+      }
+    },
+    "Choose n / n": {
+      "active_yn": "Y",
+      "category_set": "Choose Range (r / n)",
+      "inp": {
+        "Category": [
+          "C1|0|3",
+          "AL|3|3"
+        ],
+        "Item": [
+          "I1|C1|5|15",
+          "I2|C1|6|16",
+          "I3|C1|7|17"
+        ],
+        "Scalars": [
+          "3|20|3|0|10"
+        ]
+      },
+      "out": {
+        "Solution": [
+          "I1I2I3|18|48"
+        ]
+      }
+    },
+    "No itemcats": {
+      "active_yn": "Y",
+      "category_set": "ItemCat Multiplicity",
+      "inp": {
+        "Category": [
+          "C1|0|1000",
+          "AL|3|3"
+        ],
+        "Item": [
+          "I1|C1|5|15",
+          "I2|C1|6|16",
+          "I3|C1|7|17"
+        ],
+        "Scalars": [
+          "3|20|3|0|10"
+        ]
+      },
+      "out": {
+        "Solution": [
+          "I1I2I3|18|48"
+        ]
+      }
+    },
+    "One itemcat": {
+      "active_yn": "Y",
+      "category_set": "ItemCat Multiplicity",
+      "inp": {
+        "Category": [
+          "C1|0|2",
+          "AL|2|2"
+        ],
+        "Item": [
+          "I1|C1|5|15",
+          "I2|C1|6|16",
+          "I3|C1|7|17"
+        ],
+        "Scalars": [
+          "2|20|3|0|10"
+        ]
+      },
+      "out": {
+        "Solution": [
+          "I2I3|13|33",
+          "I1I3|12|32",
+          "I1I2|11|31"
+        ]
+      }
+    },
+    "Multiple itemcats": {
+      "active_yn": "Y",
+      "category_set": "ItemCat Multiplicity",
+      "inp": {
+        "Category": [
+          "C1|0|2",
+          "C2|0|2",
+          "AL|2|2"
+        ],
+        "Item": [
+          "I1|C1|5|15",
+          "I2|C1|6|16",
+          "I3|C2|7|17"
+        ],
+        "Scalars": [
+          "2|20|3|0|10"
+        ]
+      },
+      "out": {
+        "Solution": [
+          "I2I3|13|33",
+          "I1I3|12|32",
+          "I1I2|11|31"
+        ]
+      }
+    },
+    "Itemcat min only": {
+      "active_yn": "Y",
+      "category_set": "ItemCat Range",
+      "inp": {
+        "Category": [
+          "C1|1|2",
+          "C2|0|2",
+          "AL|1|1"
+        ],
+        "Item": [
+          "I1|C1|5|5",
+          "I2|C2|10|10"
+        ],
+        "Scalars": [
+          "1|20|3|0|10"
+        ]
+      },
+      "out": {
+        "Solution": [
+          "I1|5|5"
+        ]
+      }
+    },
+    "Itemcat max only": {
+      "active_yn": "Y",
+      "category_set": "ItemCat Range",
+      "inp": {
+        "Category": [
+          "C1|0|2",
+          "C2|0|0",
+          "AL|1|1"
+        ],
+        "Item": [
+          "I1|C1|5|5",
+          "I2|C2|10|10"
+        ],
+        "Scalars": [
+          "1|20|3|0|10"
+        ]
+      },
+      "out": {
+        "Solution": [
+          "I1|5|5"
+        ]
+      }
+    },
+    "Itemcat with min < max": {
+      "active_yn": "Y",
+      "category_set": "ItemCat Range",
+      "inp": {
+        "Category": [
+           "C1|1|2",
+           "C2|1|2",
+           "AL|2|2"
+        ],
+        "Item": [
+           "I1|C1|5|5",
+           "I2|C2|10|10",
+           "I3|C1|0|10"
+        ],
+        "Scalars": [
+           "2|20|3|0|10"
+        ]
+      },
+      "out": {
+        "Solution": [
+           "I2I3|10|20",
+           "I1I2|15|15"
+        ]
+      }
+    },
+    "Itemcat with min = max": {
+      "active_yn": "Y",
+      "category_set": "ItemCat Range",
+      "inp": {
+        "Category": [
+           "C1|1|1",
+           "C2|0|2",
+           "AL|2|2"
+        ],
+        "Item": [
+           "I1|C1|5|5",
+           "I2|C2|10|10",
+           "I3|C1|7|10"
+        ],
+        "Scalars": [
+           "2|20|3|0|10"
+        ]
+      },
+      "out": {
+        "Solution": [
+           "I2I3|17|20",
+           "I1I2|15|15"
+        ]
+      }
+    },
+    "No solution (want top N)": {
+      "active_yn": "Y",
+      "category_set": "Solution Multiplicity (Actual / Top N)",
+      "inp": {
+        "Category": [
+           "C1|1|2",
+           "C2|1|2",
+           "AL|2|2"
+        ],
+        "Item": [
+           "I1|C1|5|5",
+           "I2|C2|10|10",
+           "I3|C1|7|10"
+        ],
+        "Scalars": [
+           "2|10|3|0|10"
+        ]
+      },
+      "out": {
+        "Solution": [
+        ]
+      }
+    },
+    "1 solution (want top 1)": {
+      "active_yn": "Y",
+      "category_set": "Solution Multiplicity (Actual / Top N)",
+      "inp": {
+        "Category": [
+           "C1|1|2",
+           "C2|0|2",
+           "AL|2|2"
+        ],
+        "Item": [
+           "I1|C1|5|5",
+           "I2|C2|10|10",
+           "I3|C1|7|10"
+        ],
+        "Scalars": [
+           "2|12|3|0|10"
+        ]
+      },
+      "out": {
+        "Solution": [
+           "I1I3|12|15"
+        ]
+      }
+    },
+    "N solutions (want top N)": {
+      "active_yn": "Y",
+      "category_set": "Solution Multiplicity (Actual / Top N)",
+      "inp": {
+        "Category": [
+           "C1|0|2",
+           "C2|0|2",
+           "AL|2|2"
+        ],
+        "Item": [
+           "I1|C1|5|5",
+           "I2|C2|10|10",
+           "I3|C1|7|15"
+        ],
+        "Scalars": [
+           "2|25|2|0|10"
+        ]
+      },
+      "out": {
+        "Solution": [
+           "I2I3|17|25",
+           "I1I3|12|20"
+        ]
+      }
+    },
+    "< N solutions (want top N)": {
+      "active_yn": "Y",
+      "category_set": "Solution Multiplicity (Actual / Top N)",
+      "inp": {
+        "Category": [
+           "C1|0|2",
+           "C2|0|2",
+           "AL|2|2"
+        ],
+        "Item": [
+           "I1|C1|5|5",
+           "I2|C2|10|10",
+           "I3|C1|7|15"
+        ],
+        "Scalars": [
+           "2|15|3|0|10"
+        ]
+      },
+      "out": {
+        "Solution": [
+           "I1I3|12|20",
+           "I1I2|15|15"
+        ]
+      }
+    },
+    "No active constraint": {
+      "active_yn": "Y",
+      "category_set": "Constraint Activity",
+      "inp": {
+        "Category": [
+           "C1|0|3",
+           "C2|0|3",
+           "AL|2|2"
+        ],
+        "Item": [
+           "I1|C1|5|5",
+           "I2|C2|10|10",
+           "I3|C1|7|15"
+        ],
+        "Scalars": [
+           "2|50|3|0|10"
+        ]
+      },
+      "out": {
+        "Solution": [
+           "I2I3|17|25",
+           "I1I3|12|20",
+           "I1I2|15|15"
+        ]
+      }
+    },
+    "Price maximum active": {
+      "active_yn": "Y",
+      "category_set": "Constraint Activity",
+      "inp": {
+        "Category": [
+           "C1|0|3",
+           "C2|0|3",
+           "AL|2|2"
+        ],
+        "Item": [
+           "I1|C1|5|5",
+           "I2|C2|10|10",
+           "I3|C1|7|15"
+        ],
+        "Scalars": [
+           "2|15|3|0|10"
+        ]
+      },
+      "out": {
+        "Solution": [
+           "I1I3|12|20",
+           "I1I2|15|15"
+        ]
+      }
+    },
+    "Itemcat minimum active": {
+      "active_yn": "Y",
+      "category_set": "Constraint Activity",
+      "inp": {
+        "Category": [
+           "C1|0|3",
+           "C2|1|3",
+           "AL|2|2"
+        ],
+        "Item": [
+           "I1|C1|5|5",
+           "I2|C2|10|10",
+           "I3|C1|7|15"
+        ],
+        "Scalars": [
+           "2|50|3|0|10"
+        ]
+      },
+      "out": {
+        "Solution": [
+           "I2I3|17|25",
+           "I1I2|15|15"
+        ]
+      }
+    },
+    "Itemcat maximum active": {
+      "active_yn": "Y",
+      "category_set": "Constraint Activity",
+      "inp": {
+        "Category": [
+           "C1|0|1",
+           "C2|0|3",
+           "AL|2|2"
+        ],
+        "Item": [
+           "I1|C1|5|5",
+           "I2|C2|10|10",
+           "I3|C1|7|15"
+        ],
+        "Scalars": [
+           "2|50|3|0|10"
+        ]
+      },
+      "out": {
+        "Solution": [
+           "I2I3|17|25",
+           "I1I2|15|15"
+        ]
+      }
+    },
+    "Solutions exist": {
+      "active_yn": "Y",
+      "category_set": "Constraint Infeasibility",
+      "inp": {
+        "Category": [
+           "C1|0|3",
+           "C2|1|3",
+           "AL|2|2"
+        ],
+        "Item": [
+           "I1|C1|5|5",
+           "I2|C2|10|10",
+           "I3|C1|7|15"
+        ],
+        "Scalars": [
+           "2|50|3|0|10"
+        ]
+      },
+      "out": {
+        "Solution": [
+           "I2I3|17|25",
+           "I1I2|15|15"
+        ]
+      }
+    },
+    "No solution - price maximum": {
+      "active_yn": "Y",
+      "category_set": "Constraint Infeasibility",
+      "inp": {
+        "Category": [
+           "C1|0|3",
+           "C2|1|3",
+           "AL|2|2"
+        ],
+        "Item": [
+           "I1|C1|5|5",
+           "I2|C2|10|10",
+           "I3|C1|7|15"
+        ],
+        "Scalars": [
+           "2|11|3|0|10"
+        ]
+      },
+      "out": {
+        "Solution": [
+        ]
+      }
+    },
+    "No solution - itemcat minimum": {
+      "active_yn": "Y",
+      "category_set": "Constraint Infeasibility",
+      "inp": {
+        "Category": [
+           "C1|0|3",
+           "C2|2|3",
+           "AL|2|2"
+        ],
+        "Item": [
+           "I1|C1|5|5",
+           "I2|C2|10|10",
+           "I3|C1|7|15"
+        ],
+        "Scalars": [
+           "2|50|3|0|10"
+        ]
+      },
+      "out": {
+        "Solution": [
+        ]
+      }
+    },
+    "No solution - itemcat maximum": {
+      "active_yn": "Y",
+      "category_set": "Constraint Infeasibility",
+      "inp": {
+        "Category": [
+           "C1|0|1",
+           "C2|1|1",
+           "AL|3|3"
+        ],
+        "Item": [
+           "I1|C1|5|5",
+           "I2|C2|10|10",
+           "I3|C1|7|15"
+        ],
+        "Scalars": [
+           "3|50|3|0|10"
+        ]
+      },
+      "out": {
+        "Solution": [
+        ]
+      }
+    }
+  }
+}

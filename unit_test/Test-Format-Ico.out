@@ -1,0 +1,214 @@
+
+SQL*Plus: Release 21.0.0.0.0 - Production on Sun May 26 14:09:38 2024
+Version 21.3.0.0.0
+
+Copyright (c) 1982, 2021, Oracle.  All rights reserved.
+
+Last Successful login time: Sun May 26 2024 14:09:28 +01:00
+
+Connected to:
+Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+SQL>   2    3    4  
+PL/SQL procedure successfully completed.
+
+SQL> Point view at small tables and set small bind variables
+
+View created.
+
+
+View created.
+
+Categories
+
+ID     Min  Max
+----- ---- ----
+AL	 3    3
+CAT_1	 1    2
+CAT_2	 1    2
+
+Items
+
+CATEG ID  ITEM_NAME			 ITEM_PRICE ITEM_VALUE
+----- --- ------------------------------ ---------- ----------
+CAT_1 1   Item-11				  1	     1
+      2   Item-12				  2	     2
+      3   Item-13				  3	     3
+CAT_2 4   Item-21				  1	     6
+      5   Item-22				  2	     4
+      6   Item-23				  3	     2
+
+6 rows selected.
+
+Running sums of item prices
+
+ INDEX_SUM ITEM_PRICE  SUM_PRICE
+---------- ---------- ----------
+	 1	    1	       1
+	 2	    1	       2
+	 3	    2	       4
+	 4	    2	       6
+	 5	    3	       9
+	 6	    3	      12
+
+6 rows selected.
+
+Running sums of item values
+
+ INDEX_SUM ITEM_VALUE  SUM_VALUE
+---------- ---------- ----------
+	 1	    6	       6
+	 2	    4	      10
+	 3	    3	      13
+	 4	    2	      15
+	 5	    2	      17
+	 6	    1	      18
+
+6 rows selected.
+
+
+PL/SQL procedure successfully completed.
+
+SQL> SQL> SQL>   2    3    4    5    6    7    8    9   10   11   12  !
+c:\input\tt_item_cat_seqs.rsf_post_valid_out.json
+c:\input\tt_item_cat_seqs.rsf_sql_out.json
+c:\input\tt_item_cat_seqs.rsf_sql_material_out.json
+c:\input\tt_item_cat_seqs.rsf_irk_irs_tabs_out.json
+c:\input\tt_item_cat_seqs.rsf_irk_tab_where_fun_out.json
+c:\input\tt_item_cat_seqs.pop_table_iterate_out.json
+c:\input\tt_item_cat_seqs.pop_table_iterate_base_out.json
+c:\input\tt_item_cat_seqs.pop_table_iterate_link_out.json
+c:\input\tt_item_cat_seqs.pop_table_iterate_base_link_out.json
+c:\input\tt_item_cat_seqs.array_iterate_out.json
+c:\input\tt_item_cat_seqs.pop_table_recurse_out.json
+c:\input\tt_item_cat_seqs.array_recurse_out.json
+c:\input\tt_item_cat_seqs.iteratively_refine_recurse_out.json
+c:\input\tt_item_cat_seqs.iteratively_refine_iterate_out.json
+c:\input\tt_item_cat_seqs.iteratively_refine_rsf_out.json
+!
+
+PL/SQL procedure successfully completed.
+
+SQL> Disconnected from Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+ 
+File:          tt_item_cat_seqs.rsf_post_valid_out.json
+Title:         Best Item Category Combis - RSF_Post_Valid
+Inp Groups:    3
+Out Groups:    2
+Tests:         22
+Fails:         0
+Folder:        best-item-category-combis---rsf_post_valid
+ 
+File:          tt_item_cat_seqs.rsf_sql_out.json
+Title:         Best Item Category Combis - RSF_SQL
+Inp Groups:    3
+Out Groups:    2
+Tests:         22
+Fails:         0
+Folder:        best-item-category-combis---rsf_sql
+ 
+File:          tt_item_cat_seqs.rsf_sql_material_out.json
+Title:         Best Item Category Combis - RSF_SQL_Material
+Inp Groups:    3
+Out Groups:    2
+Tests:         22
+Fails:         0
+Folder:        best-item-category-combis---rsf_sql_material
+ 
+File:          tt_item_cat_seqs.rsf_irk_irs_tabs_out.json
+Title:         Best Item Category Combis - RSF_Irk_IRS_Tabs
+Inp Groups:    3
+Out Groups:    2
+Tests:         22
+Fails:         0
+Folder:        best-item-category-combis---rsf_irk_irs_tabs
+ 
+File:          tt_item_cat_seqs.rsf_irk_tab_where_fun_out.json
+Title:         Best Item Category Combis - RSF_Irk_Tab_Where_Fun
+Inp Groups:    3
+Out Groups:    2
+Tests:         22
+Fails:         0
+Folder:        best-item-category-combis---rsf_irk_tab_where_fun
+ 
+File:          tt_item_cat_seqs.pop_table_iterate_out.json
+Title:         Best Item Category Combis - Pop_Table_Iterate
+Inp Groups:    3
+Out Groups:    2
+Tests:         22
+Fails:         0
+Folder:        best-item-category-combis---pop_table_iterate
+ 
+File:          tt_item_cat_seqs.pop_table_iterate_base_out.json
+Title:         Best Item Category Combis - Pop_Table_Iterate_Base
+Inp Groups:    3
+Out Groups:    2
+Tests:         22
+Fails:         0
+Folder:        best-item-category-combis---pop_table_iterate_base
+ 
+File:          tt_item_cat_seqs.pop_table_iterate_link_out.json
+Title:         Best Item Category Combis - Pop_Table_Iterate_Link
+Inp Groups:    3
+Out Groups:    2
+Tests:         22
+Fails:         0
+Folder:        best-item-category-combis---pop_table_iterate_link
+ 
+File:          tt_item_cat_seqs.pop_table_iterate_base_link_out.json
+Title:         Best Item Category Combis - Pop_Table_Iterate_Base_Link
+Inp Groups:    3
+Out Groups:    2
+Tests:         22
+Fails:         0
+Folder:        best-item-category-combis---pop_table_iterate_base_link
+ 
+File:          tt_item_cat_seqs.array_iterate_out.json
+Title:         Best Item Category Combis - Array_Iterate
+Inp Groups:    3
+Out Groups:    2
+Tests:         22
+Fails:         0
+Folder:        best-item-category-combis---array_iterate
+ 
+File:          tt_item_cat_seqs.pop_table_recurse_out.json
+Title:         Best Item Category Combis - Pop_Table_Recurse
+Inp Groups:    3
+Out Groups:    2
+Tests:         22
+Fails:         0
+Folder:        best-item-category-combis---pop_table_recurse
+ 
+File:          tt_item_cat_seqs.array_recurse_out.json
+Title:         Best Item Category Combis - Array_Recurse
+Inp Groups:    3
+Out Groups:    2
+Tests:         22
+Fails:         0
+Folder:        best-item-category-combis---array_recurse
+ 
+File:          tt_item_cat_seqs.iteratively_refine_recurse_out.json
+Title:         Best Item Category Combis - Iteratively_Refine_Recurse
+Inp Groups:    3
+Out Groups:    2
+Tests:         22
+Fails:         0
+Folder:        best-item-category-combis---iteratively_refine_recurse
+ 
+File:          tt_item_cat_seqs.iteratively_refine_iterate_out.json
+Title:         Best Item Category Combis - Iteratively_Refine_Iterate
+Inp Groups:    3
+Out Groups:    2
+Tests:         22
+Fails:         0
+Folder:        best-item-category-combis---iteratively_refine_iterate
+ 
+File:          tt_item_cat_seqs.iteratively_refine_rsf_out.json
+Title:         Best Item Category Combis - Iteratively_Refine_RSF
+Inp Groups:    3
+Out Groups:    2
+Tests:         22
+Fails:         0
+Folder:        best-item-category-combis---iteratively_refine_rsf

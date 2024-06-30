@@ -1,0 +1,98 @@
+14-Jun-24 10:36:59
+
+
+    Directory: C:\Users\Brend\Dropbox\Home\WIP\item_category_optimization_oracle\app
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+d-----        14/06/2024     10:36                perturb_36                                                           
+sml
+newCmd = @..\item_cat_seqs_perturb sml 3
+3
+newCmd = @..\item_cat_seqs_perturb sml 4
+4
+newCmd = @..\item_cat_seqs_perturb sml 5
+5
+newCmd = @..\item_cat_seqs_perturb sml 6
+6
+newCmd = @..\item_cat_seqs_perturb sml 7
+7
+@..\c_temp_tables
+@..\views_sml
+@..\item_cat_seqs_perturb sml 3
+@..\item_cat_seqs_perturb sml 4
+@..\item_cat_seqs_perturb sml 5
+@..\item_cat_seqs_perturb sml 6
+@..\item_cat_seqs_perturb sml 7
+
+bra
+newCmd = @..\item_cat_seqs_perturb bra 8000
+8000
+newCmd = @..\item_cat_seqs_perturb bra 10000
+10000
+newCmd = @..\item_cat_seqs_perturb bra 12000
+12000
+newCmd = @..\item_cat_seqs_perturb bra 14000
+14000
+newCmd = @..\item_cat_seqs_perturb bra 16000
+16000
+newCmd = @..\item_cat_seqs_perturb bra 18000
+18000
+newCmd = @..\item_cat_seqs_perturb bra 20000
+20000
+newCmd = @..\item_cat_seqs_perturb bra 22000
+22000
+newCmd = @..\item_cat_seqs_perturb bra 24000
+24000
+@..\c_temp_tables
+@..\views_bra
+@..\item_cat_seqs_perturb bra 8000
+@..\item_cat_seqs_perturb bra 10000
+@..\item_cat_seqs_perturb bra 12000
+@..\item_cat_seqs_perturb bra 14000
+@..\item_cat_seqs_perturb bra 16000
+@..\item_cat_seqs_perturb bra 18000
+@..\item_cat_seqs_perturb bra 20000
+@..\item_cat_seqs_perturb bra 22000
+@..\item_cat_seqs_perturb bra 24000
+
+eng
+newCmd = @..\item_cat_seqs_perturb eng 500
+500
+newCmd = @..\item_cat_seqs_perturb eng 600
+600
+newCmd = @..\item_cat_seqs_perturb eng 650
+650
+newCmd = @..\item_cat_seqs_perturb eng 700
+700
+newCmd = @..\item_cat_seqs_perturb eng 750
+750
+newCmd = @..\item_cat_seqs_perturb eng 800
+800
+newCmd = @..\item_cat_seqs_perturb eng 850
+850
+newCmd = @..\item_cat_seqs_perturb eng 900
+900
+newCmd = @..\item_cat_seqs_perturb eng 950
+950
+newCmd = @..\item_cat_seqs_perturb eng 1000
+1000
+newCmd = @..\item_cat_seqs_perturb eng 1100
+1100
+@..\c_temp_tables
+@..\views_eng
+@..\item_cat_seqs_perturb eng 500
+@..\item_cat_seqs_perturb eng 600
+@..\item_cat_seqs_perturb eng 650
+@..\item_cat_seqs_perturb eng 700
+@..\item_cat_seqs_perturb eng 750
+@..\item_cat_seqs_perturb eng 800
+@..\item_cat_seqs_perturb eng 850
+@..\item_cat_seqs_perturb eng 900
+@..\item_cat_seqs_perturb eng 950
+@..\item_cat_seqs_perturb eng 1000
+@..\item_cat_seqs_perturb eng 1100
+
+
+

@@ -1,0 +1,23 @@
+Category Set,Scenario,Active
+Choose Range (r / n),Choose 1 / n,Y
+Choose Range (r / n),Choose r / n (r < n),Y
+Choose Range (r / n),Choose n / n,Y
+ItemCat Multiplicity,No itemcats,Y
+ItemCat Multiplicity,One itemcat,Y
+ItemCat Multiplicity,Multiple itemcats,Y
+ItemCat Range,Itemcat min only,Y
+ItemCat Range,Itemcat max only,Y
+ItemCat Range,Itemcat with min < max,Y
+ItemCat Range,Itemcat with min = max,Y
+Solution Multiplicity (Actual / Top N),No solution (want top N),Y
+Solution Multiplicity (Actual / Top N),1 solution (want top 1),Y
+Solution Multiplicity (Actual / Top N),N solutions (want top N),Y
+Solution Multiplicity (Actual / Top N),< N solutions (want top N),Y
+Constraint Activity,No active constraint,Y
+Constraint Activity,Price maximum active,Y
+Constraint Activity,Itemcat minimum active,Y
+Constraint Activity,Itemcat maximum active,Y
+Constraint Infeasibility,Solutions exist,Y
+Constraint Infeasibility,No solution - price maximum,Y
+Constraint Infeasibility,No solution - itemcat minimum,Y
+Constraint Infeasibility,No solution - itemcat maximum,Y

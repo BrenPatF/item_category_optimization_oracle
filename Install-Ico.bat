@@ -1,0 +1,1 @@
+pwsh -file .\Install-Ico.ps1  > .\Install-Ico.out 2> .\Install-Ico.err

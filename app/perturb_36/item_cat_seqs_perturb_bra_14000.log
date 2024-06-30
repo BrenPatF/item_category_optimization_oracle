@@ -1,0 +1,257 @@
+
+Database             Time                 Version
+-------------------- -------------------- ------------------------------
+Start: ORCL          14-JUN-2024 10:37:09 Version 21.3.0.0.0
+
+Truncate paths
+
+Table truncated.
+
+old   2:     :MAX_PRICE := &MAX_PRICE;
+new   2:     :MAX_PRICE := 14000;
+
+PL/SQL procedure successfully completed.
+
+Recompile item_cat_seqs.pkb
+
+Package body created.
+
+No errors.
+Just set context values: SEQ_SIZE = 12, MAX_PRICE = 14000, ITEM_WIDTH = 3, TOP_N = 10
+Previously set context values: SEQ_TYPE = , MIN_VALUE = , KEEP_NUM =
+
+PL/SQL procedure successfully completed.
+
+
+PL/SQL procedure successfully completed.
+
+Pop_Table_Iterate
+11 running sums
+SQL_ID  323bar13mrwwy, child number 0
+-------------------------------------
+INSERT /*+ gather_plan_statistics INSERT_PATHS */ INTO PATHS (
+PATH_RNK, ITEM_RNK, LEV, TOT_PRICE, TOT_VALUE, CAT_ID, NEXT_CAT_ID,
+SAME_CATS, MIN_ITEMS, CATS_PATH, PATH ) WITH PATH_JOIN AS ( SELECT
+ROW_NUMBER() OVER (PARTITION BY TRW.CATS_PATH || IRK.CAT_ID ORDER BY
+TRW.TOT_VALUE + IRK.ITEM_VALUE DESC, TRW.TOT_PRICE + IRK.ITEM_PRICE)
+PATH_RNK, IRK.ITEM_RNK, :B6 LEV, TRW.TOT_PRICE + IRK.ITEM_PRICE
+TOT_PRICE, TRW.TOT_VALUE + IRK.ITEM_VALUE TOT_VALUE, IRK.CAT_ID,
+IRK.NEXT_CAT_ID, CASE IRK.CAT_ID WHEN TRW.CAT_ID THEN TRW.SAME_CATS + 1
+ELSE 1 END SAME_CATS, IRK.MIN_ITEMS, TRW.CATS_PATH || IRK.CAT_ID
+CATS_PATH, TRW.PATH || IRK.ITEM_ID PATH FROM PATHS TRW JOIN
+ITEMS_RANKED IRK ON IRK.ITEM_RNK BETWEEN (TRW.ITEM_RNK + 1) AND
+(IRK.N_ITEMS - (:B1 - TRW.LEV - 1)) WHERE TRW.TOT_PRICE +
+IRK.ITEM_PRICE + :B5 <= :B4 AND TRW.TOT_VALUE + IRK.ITEM_VALUE + :B3 >=
+:B2 AND TRW.LEV < :B1 AND CASE IRK.CAT_ID WHEN TRW.CAT_ID THEN
+TRW.SAME_CATS + 1 ELSE 1 END <= IRK.MAX_ITEMS AND :B1 - (TRW.LEV + 1) +
+LEAST(CAS
+Plan hash value: 1216662075
+------------------------------------------------------------------------------------------------------------------------------------
+| Id  | Operation                | Name               | Starts | E-Rows | A-Rows |   A-Time   | Buffers |  OMem |  1Mem | Used-Mem |
+------------------------------------------------------------------------------------------------------------------------------------
+|   0 | INSERT STATEMENT         |                    |      1 |        |      0 |00:00:00.01 |      16 |       |       |          |
+|   1 |  LOAD TABLE CONVENTIONAL | PATHS              |      1 |        |      0 |00:00:00.01 |      16 |       |       |          |
+|*  2 |   VIEW                   |                    |      1 |      1 |     93 |00:00:00.01 |       7 |       |       |          |
+|   3 |    WINDOW SORT           |                    |      1 |      1 |    318 |00:00:00.01 |       7 | 80896 | 80896 |71680  (0)|
+|   4 |     NESTED LOOPS         |                    |      1 |      1 |    318 |00:00:00.01 |       7 |       |       |          |
+|*  5 |      TABLE ACCESS FULL   | PATHS              |      1 |      1 |     60 |00:00:00.01 |       4 |       |       |          |
+|*  6 |      INDEX RANGE SCAN    | SYS_IOT_TOP_179621 |     60 |      1 |    318 |00:00:00.01 |       3 |       |       |          |
+------------------------------------------------------------------------------------------------------------------------------------
+Predicate Information (identified by operation id):
+---------------------------------------------------
+2 - filter(("PATH_RNK"<=:B7 OR :B7=0))
+5 - filter("TRW"."LEV"<:B1)
+6 - access("IRK"."ITEM_RNK">="TRW"."ITEM_RNK"+1)
+filter(("TRW"."TOT_PRICE"+"IRK"."ITEM_PRICE"+:B5<=:B4 AND "TRW"."TOT_VALUE"+"IRK"."ITEM_VALUE"+:B3>=:B2 AND
+"IRK"."ITEM_RNK"<="IRK"."N_ITEMS"-(:B1-"TRW"."LEV"-1) AND "IRK"."MAX_ITEMS">=CASE "IRK"."CAT_ID" WHEN "TRW"."CAT_ID" THEN
+"TRW"."SAME_CATS"+1 ELSE 1 END  AND "IRK"."MIN_REMAIN"<=:B1-("TRW"."LEV"+1)+LEAST(CASE "IRK"."CAT_ID" WHEN "TRW"."CAT_ID"
+THEN "TRW"."SAME_CATS"+1 ELSE 1 END ,"IRK"."MIN_ITEMS") AND ("IRK"."CAT_ID"="TRW"."CAT_ID" OR
+"TRW"."SAME_CATS">="TRW"."MIN_ITEMS") AND ("IRK"."CAT_ID"="TRW"."CAT_ID" OR
+"IRK"."CAT_ID"=NVL("TRW"."NEXT_CAT_ID","IRK"."CAT_ID"))))
+Note
+-----
+- dynamic statistics used: dynamic sampling (level=2)
+Timer Set: Pop_Table_Iterate, Constructed at 14 Jun 2024 10:37:09, written at 10:37:10
+======================================================================================
+Timer                    Elapsed         CPU       Calls       Ela/Call       CPU/Call
+--------------------  ----------  ----------  ----------  -------------  -------------
+Initial delete (0)          0.01        0.00           1        0.00500        0.00000
+Initial insert (1)          0.00        0.00           1        0.00000        0.00000
+Insert paths 1 (10)         0.00        0.00           1        0.00100        0.00000
+Delete paths 1 (1)          0.00        0.00           1        0.00000        0.00000
+Insert paths 2 (10)         0.00        0.00           1        0.00300        0.00000
+Delete paths 2 (10)         0.00        0.00           1        0.00000        0.00000
+Insert paths 3 (10)         0.00        0.01           1        0.00300        0.01000
+Delete paths 3 (10)         0.00        0.00           1        0.00000        0.00000
+Insert paths 4 (10)         0.00        0.00           1        0.00200        0.00000
+Delete paths 4 (10)         0.00        0.00           1        0.00000        0.00000
+Insert paths 5 (20)         0.01        0.01           1        0.00500        0.01000
+Delete paths 5 (10)         0.00        0.00           1        0.00100        0.00000
+Insert paths 6 (20)         0.01        0.00           1        0.00600        0.00000
+Delete paths 6 (20)         0.00        0.00           1        0.00100        0.00000
+Insert paths 7 (20)         0.00        0.00           1        0.00200        0.00000
+Delete paths 7 (20)         0.00        0.00           1        0.00100        0.00000
+Insert paths 8 (30)         0.00        0.00           1        0.00200        0.00000
+Delete paths 8 (20)         0.00        0.00           1        0.00100        0.00000
+Insert paths 9 (60)         0.00        0.00           1        0.00300        0.00000
+Delete paths 9 (30)         0.00        0.00           1        0.00000        0.00000
+Insert paths 10 (93)        0.39        0.29           1        0.38900        0.29000
+Delete paths 10 (60)        0.00        0.00           1        0.00000        0.00000
+Insert paths 11 (84)        0.00        0.00           1        0.00300        0.00000
+Delete paths 11 (93)        0.00        0.00           1        0.00100        0.00000
+Insert paths 12 (25)        0.00        0.00           1        0.00100        0.00000
+Delete paths 12 (84)        0.00        0.00           1        0.00000        0.00000
+(Other)                     0.00        0.00           1        0.00000        0.00000
+--------------------  ----------  ----------  ----------  -------------  -------------
+Total                       0.43        0.31          27        0.01593        0.01148
+--------------------  ----------  ----------  ----------  -------------  -------------
+[Timer timed (per call in ms): Elapsed: 0.02244, CPU: 0.02444]
+SQL_ID  323bar13mrwwy, child number 0
+-------------------------------------
+INSERT /*+ gather_plan_statistics INSERT_PATHS */ INTO PATHS (
+PATH_RNK, ITEM_RNK, LEV, TOT_PRICE, TOT_VALUE, CAT_ID, NEXT_CAT_ID,
+SAME_CATS, MIN_ITEMS, CATS_PATH, PATH ) WITH PATH_JOIN AS ( SELECT
+ROW_NUMBER() OVER (PARTITION BY TRW.CATS_PATH || IRK.CAT_ID ORDER BY
+TRW.TOT_VALUE + IRK.ITEM_VALUE DESC, TRW.TOT_PRICE + IRK.ITEM_PRICE)
+PATH_RNK, IRK.ITEM_RNK, :B6 LEV, TRW.TOT_PRICE + IRK.ITEM_PRICE
+TOT_PRICE, TRW.TOT_VALUE + IRK.ITEM_VALUE TOT_VALUE, IRK.CAT_ID,
+IRK.NEXT_CAT_ID, CASE IRK.CAT_ID WHEN TRW.CAT_ID THEN TRW.SAME_CATS + 1
+ELSE 1 END SAME_CATS, IRK.MIN_ITEMS, TRW.CATS_PATH || IRK.CAT_ID
+CATS_PATH, TRW.PATH || IRK.ITEM_ID PATH FROM PATHS TRW JOIN
+ITEMS_RANKED IRK ON IRK.ITEM_RNK BETWEEN (TRW.ITEM_RNK + 1) AND
+(IRK.N_ITEMS - (:B1 - TRW.LEV - 1)) WHERE TRW.TOT_PRICE +
+IRK.ITEM_PRICE + :B5 <= :B4 AND TRW.TOT_VALUE + IRK.ITEM_VALUE + :B3 >=
+:B2 AND TRW.LEV < :B1 AND CASE IRK.CAT_ID WHEN TRW.CAT_ID THEN
+TRW.SAME_CATS + 1 ELSE 1 END <= IRK.MAX_ITEMS AND :B1 - (TRW.LEV + 1) +
+LEAST(CAS
+Plan hash value: 1216662075
+------------------------------------------------------------------------------------------------------------------------------------
+| Id  | Operation                | Name               | Starts | E-Rows | A-Rows |   A-Time   | Buffers |  OMem |  1Mem | Used-Mem |
+------------------------------------------------------------------------------------------------------------------------------------
+|   0 | INSERT STATEMENT         |                    |      1 |        |      0 |00:00:00.01 |      45 |       |       |          |
+|   1 |  LOAD TABLE CONVENTIONAL | PATHS              |      1 |        |      0 |00:00:00.01 |      45 |       |       |          |
+|*  2 |   VIEW                   |                    |      1 |      1 |    300 |00:00:00.01 |       9 |       |       |          |
+|   3 |    WINDOW SORT           |                    |      1 |      1 |   1103 |00:00:00.01 |       9 |   267K|   267K|  237K (0)|
+|   4 |     NESTED LOOPS         |                    |      1 |      1 |   1103 |00:00:00.01 |       9 |       |       |          |
+|*  5 |      TABLE ACCESS FULL   | PATHS              |      1 |      1 |    180 |00:00:00.01 |       6 |       |       |          |
+|*  6 |      INDEX RANGE SCAN    | SYS_IOT_TOP_179621 |    180 |      1 |   1103 |00:00:00.01 |       3 |       |       |          |
+------------------------------------------------------------------------------------------------------------------------------------
+Predicate Information (identified by operation id):
+---------------------------------------------------
+2 - filter(("PATH_RNK"<=:B7 OR :B7=0))
+5 - filter("TRW"."LEV"<:B1)
+6 - access("IRK"."ITEM_RNK">="TRW"."ITEM_RNK"+1)
+filter(("TRW"."TOT_PRICE"+"IRK"."ITEM_PRICE"+:B5<=:B4 AND "TRW"."TOT_VALUE"+"IRK"."ITEM_VALUE"+:B3>=:B2 AND
+"IRK"."ITEM_RNK"<="IRK"."N_ITEMS"-(:B1-"TRW"."LEV"-1) AND "IRK"."MAX_ITEMS">=CASE "IRK"."CAT_ID" WHEN "TRW"."CAT_ID" THEN
+"TRW"."SAME_CATS"+1 ELSE 1 END  AND "IRK"."MIN_REMAIN"<=:B1-("TRW"."LEV"+1)+LEAST(CASE "IRK"."CAT_ID" WHEN "TRW"."CAT_ID"
+THEN "TRW"."SAME_CATS"+1 ELSE 1 END ,"IRK"."MIN_ITEMS") AND ("IRK"."CAT_ID"="TRW"."CAT_ID" OR
+"TRW"."SAME_CATS">="TRW"."MIN_ITEMS") AND ("IRK"."CAT_ID"="TRW"."CAT_ID" OR
+"IRK"."CAT_ID"=NVL("TRW"."NEXT_CAT_ID","IRK"."CAT_ID"))))
+Note
+-----
+- dynamic statistics used: dynamic sampling (level=2)
+Timer Set: Pop_Table_Iterate, Constructed at 14 Jun 2024 10:37:10, written at 10:37:10
+======================================================================================
+Timer                     Elapsed         CPU       Calls       Ela/Call       CPU/Call
+---------------------  ----------  ----------  ----------  -------------  -------------
+Initial delete (25)          0.00        0.00           1        0.00100        0.00000
+Initial insert (1)           0.00        0.00           1        0.00000        0.00000
+Insert paths 1 (20)          0.00        0.00           1        0.00100        0.00000
+Delete paths 1 (1)           0.00        0.00           1        0.00000        0.00000
+Insert paths 2 (30)          0.01        0.00           1        0.00600        0.00000
+Delete paths 2 (20)          0.00        0.00           1        0.00100        0.00000
+Insert paths 3 (30)          0.01        0.00           1        0.00600        0.00000
+Delete paths 3 (30)          0.00        0.00           1        0.00000        0.00000
+Insert paths 4 (30)          0.01        0.00           1        0.00600        0.00000
+Delete paths 4 (30)          0.00        0.00           1        0.00100        0.00000
+Insert paths 5 (60)          0.01        0.00           1        0.00700        0.00000
+Delete paths 5 (30)          0.00        0.00           1        0.00000        0.00000
+Insert paths 6 (60)          0.01        0.00           1        0.01000        0.00000
+Delete paths 6 (60)          0.00        0.00           1        0.00000        0.00000
+Insert paths 7 (60)          0.01        0.00           1        0.00900        0.00000
+Delete paths 7 (60)          0.00        0.00           1        0.00100        0.00000
+Insert paths 8 (90)          0.01        0.00           1        0.00800        0.00000
+Delete paths 8 (60)          0.00        0.00           1        0.00000        0.00000
+Insert paths 9 (180)         0.01        0.00           1        0.00900        0.00000
+Delete paths 9 (90)          0.00        0.00           1        0.00100        0.00000
+Insert paths 10 (300)        0.36        0.12           1        0.35600        0.12000
+Delete paths 10 (180)        0.00        0.00           1        0.00100        0.00000
+Insert paths 11 (279)        0.01        0.00           1        0.00600        0.00000
+Delete paths 11 (300)        0.00        0.00           1        0.00100        0.00000
+Insert paths 12 (71)         0.00        0.00           1        0.00200        0.00000
+Delete paths 12 (279)        0.00        0.00           1        0.00100        0.00000
+(Other)                      0.00        0.00           1        0.00000        0.00000
+---------------------  ----------  ----------  ----------  -------------  -------------
+Total                        0.43        0.12          27        0.01607        0.00444
+---------------------  ----------  ----------  ----------  -------------  -------------
+[Timer timed (per call in ms): Elapsed: 0.01603, CPU: 0.00000]
+Timer Set: Iteratively_Refine_Iterate, Constructed at 14 Jun 2024 10:37:09, written at 10:37:11
+===============================================================================================
+Timer                                             Elapsed         CPU       Calls       Ela/Call       CPU/Call
+---------------------------------------------  ----------  ----------  ----------  -------------  -------------
+PTI 1: MIN_VALUE / KEEP_NUM = 0 / 10                 0.53        0.43           1        0.53300        0.43000
+SELECT 1: MIN_VALUE / KEEP_NUM = 8608 / 10           0.00        0.00           1        0.00000        0.00000
+PTI (final): MIN_VALUE / KEEP_NUM = 8608 / 30        0.54        0.12           1        0.53600        0.12000
+(Other)                                              0.00        0.00           1        0.00000        0.00000
+---------------------------------------------  ----------  ----------  ----------  -------------  -------------
+Total                                                1.07        0.55           4        0.26725        0.13750
+---------------------------------------------  ----------  ----------  ----------  -------------  -------------
+[Timer timed (per call in ms): Elapsed: 0.01695, CPU: 0.00000]
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:01.18
+Iteratively_Refine_Iterate - 10'th to 1'st highest values, then corresponding prices
+
+Summary
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+14000, 9724, 9730, 9731, 9738, 9745, 9747, 9754, 9806, 9813, 9914; Prices: 13506, 13619, 13256, 13941, 13691, 13905, 13655, 13930, 13680, 13890; 2 : Values, Prices, Seconds
+
+Elapsed: 00:00:00.00
+Iteratively_Refine_Iterate - Best and Worst
+
+Summary
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+14000, 9914, 9724, 2 - BEST (V, P): (9914, 13890); WORST (V, P): (9724, 13506); Seconds: 2
+
+Elapsed: 00:00:00.00
+Iteratively_Refine_Iterate
+
+Path                                 Total Value Total Price  Rank
+------------------------------------ ----------- ----------- -----
+078022098099059060061001002011038043        9914       13890     1
+078022098099059060061001004008038043        9813       13680     2
+078022098099059060061002004008038043        9806       13930     3
+078022098099059060061001004011038042        9754       13655     4
+078022098099059060061002004011038042        9747       13905     5
+078022098099058060061001004011038043        9745       13691     6
+078022098099058060061002004011038043        9738       13941     7
+078022098099059060061001004011038043        9731       13256     8
+078022098099059060061001004012038043        9730       13619     9
+078022098099059060061002004011038043        9724       13506    10
+
+10 rows selected.
+
+Elapsed: 00:00:00.00
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+Timer Set: Item_Cat_Seqs_Loop, Constructed at 14 Jun 2024 10:37:09, written at 10:37:11
+=======================================================================================
+Timer                                       Elapsed         CPU       Calls       Ela/Call       CPU/Call
+---------------------------------------  ----------  ----------  ----------  -------------  -------------
+Iteratively_Refine_Iterate - path level        1.19        0.55           1        1.18800        0.55000
+(Other)                                        0.00        0.00           1        0.00100        0.00000
+---------------------------------------  ----------  ----------  ----------  -------------  -------------
+Total                                          1.19        0.55           2        0.59450        0.27500
+---------------------------------------  ----------  ----------  ----------  -------------  -------------
+[Timer timed (per call in ms): Elapsed: 0.02120, CPU: 0.00600]
+
+PL/SQL procedure successfully completed.
+
+
+'END:'||TO_CHAR(SYSDATE,'DD-MON-YY
+----------------------------------
+End: 14-JUN-2024 10:37:11
+

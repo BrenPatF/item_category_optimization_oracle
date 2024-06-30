@@ -1,0 +1,179 @@
+
+Database             Time                 Version
+-------------------- -------------------- ------------------------------
+Start: ORCL          09-JUN-2024 15:53:56 Version 21.3.0.0.0
+
+Recompile item_cat_seqs.pkb
+
+Package body created.
+
+No errors.
+Just set context values: SEQ_SIZE = 3, MAX_PRICE = 5, ITEM_WIDTH = 1, TOP_N = 3
+Previously set context values: SEQ_TYPE = , MIN_VALUE = , KEEP_NUM =
+
+PL/SQL procedure successfully completed.
+
+Pop_Table_Iterate
+old   2:   Item_Seqs.Pop_Table_Iterate(p_seq_type => '&SEQ_TP');
+new   2:   Item_Seqs.Pop_Table_Iterate(p_seq_type => 'SC');
+
+PL/SQL procedure successfully completed.
+
+
+Path Total Price Total Value
+---- ----------- -----------
+123            6           6
+124            4           9
+125            5           7
+126            6           5
+134            5          10
+135            6           8
+136            7           6
+145            4          11
+146            5           9
+156            6           7
+234            6          11
+235            7           9
+236            8           7
+245            5          12
+246            6          10
+256            7           8
+345            6          13
+346            7          11
+356            8           9
+456            6          12
+
+20 rows selected.
+
+Pop_Table_Recurse
+old   2:   Item_Seqs.Pop_Table_Recurse(p_seq_type => '&SEQ_TP');
+new   2:   Item_Seqs.Pop_Table_Recurse(p_seq_type => 'SC');
+
+PL/SQL procedure successfully completed.
+
+old   3:  WHERE lev = &SEQ_SIZE
+new   3:  WHERE lev = 3
+
+Path Total Price Total Value
+---- ----------- -----------
+123            6           6
+124            4           9
+125            5           7
+126            6           5
+134            5          10
+135            6           8
+136            7           6
+145            4          11
+146            5           9
+156            6           7
+234            6          11
+235            7           9
+236            8           7
+245            5          12
+246            6          10
+256            7           8
+345            6          13
+346            7          11
+356            8           9
+456            6          12
+
+20 rows selected.
+
+Array_Iterate
+old   2:   FROM Item_Seqs.Array_Iterate(p_seq_type => '&SEQ_TP')
+new   2:   FROM Item_Seqs.Array_Iterate(p_seq_type => 'SC')
+
+Path Total Price Total Value
+---- ----------- -----------
+123            6           6
+124            4           9
+125            5           7
+126            6           5
+134            5          10
+135            6           8
+136            7           6
+145            4          11
+146            5           9
+156            6           7
+234            6          11
+235            7           9
+236            8           7
+245            5          12
+246            6          10
+256            7           8
+345            6          13
+346            7          11
+356            8           9
+456            6          12
+
+20 rows selected.
+
+Array_Recurse
+old   2:   FROM Item_Seqs.Array_Recurse(p_seq_type => '&SEQ_TP')
+new   2:   FROM Item_Seqs.Array_Recurse(p_seq_type => 'SC')
+old   3:  WHERE lev = &SEQ_SIZE
+new   3:  WHERE lev = 3
+
+Path Total Price Total Value
+---- ----------- -----------
+123            6           6
+124            4           9
+125            5           7
+126            6           5
+134            5          10
+135            6           8
+136            7           6
+145            4          11
+146            5           9
+156            6           7
+234            6          11
+235            7           9
+236            8           7
+245            5          12
+246            6          10
+256            7           8
+345            6          13
+346            7          11
+356            8           9
+456            6          12
+
+20 rows selected.
+
+item_seqs_rsf_v
+old  13:                     p_seq_type       => '&SEQ_TP',
+new  13:                     p_seq_type       => 'SC',
+old  17:        AND trw.lev < &SEQ_SIZE
+new  17:        AND trw.lev < 3
+old  21:  WHERE lev = &SEQ_SIZE
+new  21:  WHERE lev = 3
+
+Path Total Price Total Value
+---- ----------- -----------
+123            6           6
+124            4           9
+125            5           7
+126            6           5
+134            5          10
+135            6           8
+136            7           6
+145            4          11
+146            5           9
+156            6           7
+234            6          11
+235            7           9
+236            8           7
+245            5          12
+246            6          10
+256            7           8
+345            6          13
+346            7          11
+356            8           9
+456            6          12
+
+20 rows selected.
+
+
+'END:'||TO_CHAR(SYSDATE,'DD-MON-YY
+----------------------------------
+End: 09-JUN-2024 15:53:56
+

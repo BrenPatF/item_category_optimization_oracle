@@ -1,0 +1,309 @@
+
+Database             Time                 Version
+-------------------- -------------------- ------------------------------
+Start: ORCL          09-JUN-2024 15:53:59 Version 21.3.0.0.0
+
+Truncate paths
+
+Table truncated.
+
+SP2-0310: unable to open file "set_contexts.sql"
+
+PL/SQL procedure successfully completed.
+
+old   2:      Item_Cat_Seqs.Init_Loop(p_keep_start      => &KEEP_START,
+new   2:      Item_Cat_Seqs.Init_Loop(p_keep_start      => 10,
+old   3:                              p_keep_factor     => &KEEP_FACTOR);
+new   3:                              p_keep_factor     => 3);
+2 running sums
+
+PL/SQL procedure successfully completed.
+
+Iteratively_Refine_Recurse - path level
+
+Path Total Value Total Price  Rank
+---- ----------- ----------- -----
+245           12           5     1
+145           11           4     2
+314           10           5     3
+
+Timer Set: Array_Recurse, Constructed at 09 Jun 2024 15:53:59, written at 15:53:59
+==================================================================================
+Timer                    Elapsed         CPU       Calls       Ela/Call       CPU/Call
+--------------------  ----------  ----------  ----------  -------------  -------------
+Recurse level: 1 (3)        0.00        0.00           1        0.00000        0.00000
+Recurse level: 2 (7)        0.00        0.00           1        0.00000        0.00000
+Recurse level: 3 (6)        0.00        0.00           1        0.00000        0.00000
+(Other)                     0.00        0.00           1        0.00000        0.00000
+--------------------  ----------  ----------  ----------  -------------  -------------
+Total                       0.00        0.00           4        0.00000        0.00000
+--------------------  ----------  ----------  ----------  -------------  -------------
+[Timer timed (per call in ms): Elapsed: 0.00917, CPU: 0.01101]
+Timer Set: Array_Recurse, Constructed at 09 Jun 2024 15:53:59, written at 15:53:59
+==================================================================================
+Timer                    Elapsed         CPU       Calls       Ela/Call       CPU/Call
+--------------------  ----------  ----------  ----------  -------------  -------------
+Recurse level: 1 (3)        0.00        0.00           1        0.00100        0.00000
+Recurse level: 2 (6)        0.00        0.00           1        0.00000        0.00000
+Recurse level: 3 (3)        0.00        0.01           1        0.00000        0.01000
+(Other)                     0.00        0.00           1        0.00000        0.00000
+--------------------  ----------  ----------  ----------  -------------  -------------
+Total                       0.00        0.01           4        0.00025        0.00250
+--------------------  ----------  ----------  ----------  -------------  -------------
+[Timer timed (per call in ms): Elapsed: 0.00877, CPU: 0.00789]
+Timer Set: Iteratively_Refine_Recurse, Constructed at 09 Jun 2024 15:53:59, written at 15:54:00
+===============================================================================================
+Timer                                            Elapsed         CPU       Calls       Ela/Call       CPU/Call
+--------------------------------------------  ----------  ----------  ----------  -------------  -------------
+set_Globals 1: MIN_VALUE / KEEP_NUM = 0 / 10        0.00        0.00           1        0.00000        0.00000
+SELECT 1: MIN_VALUE / KEEP_NUM = 10 / 10            0.11        0.12           1        0.10600        0.12000
+set_Globals: MIN_VALUE / KEEP_NUM = 10 / 30         0.00        0.00           1        0.00000        0.00000
+Pipe 3 rows: MIN_VALUE / KEEP_NUM = 10 / 30         0.10        0.10           1        0.10400        0.10000
+(Other)                                             0.00        0.00           1        0.00000        0.00000
+--------------------------------------------  ----------  ----------  ----------  -------------  -------------
+Total                                               0.21        0.22           5        0.04200        0.04400
+--------------------------------------------  ----------  ----------  ----------  -------------  -------------
+[Timer timed (per call in ms): Elapsed: 0.00980, CPU: 0.00980]
+Elapsed: 00:00:00.32
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+old   2:      Item_Cat_Seqs.Init_Loop(p_keep_start      => &KEEP_START,
+new   2:      Item_Cat_Seqs.Init_Loop(p_keep_start      => 10,
+old   3:                              p_keep_factor     => &KEEP_FACTOR);
+new   3:                              p_keep_factor     => 3);
+2 running sums
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+Iteratively_Refine_Recurse - item level
+
+Total Value Total Price  Rank Category Item Name            Value      Price
+----------- ----------- ----- -------- ---- ---------- ---------- ----------
+         12           5     1 CAT_1    2    Item-12             2          2
+                              CAT_2    4    Item-21             6          1
+                                       5    Item-22             4          2
+         11           4     2 CAT_1    1    Item-11             1          1
+                              CAT_2    4    Item-21             6          1
+                                       5    Item-22             4          2
+         10           5     3 CAT_1    3    Item-13             3          3
+                                       1    Item-11             1          1
+                              CAT_2    4    Item-21             6          1
+
+9 rows selected.
+
+Timer Set: Array_Recurse, Constructed at 09 Jun 2024 15:54:00, written at 15:54:00
+==================================================================================
+Timer                    Elapsed         CPU       Calls       Ela/Call       CPU/Call
+--------------------  ----------  ----------  ----------  -------------  -------------
+Recurse level: 1 (3)        0.00        0.00           1        0.00100        0.00000
+Recurse level: 2 (7)        0.00        0.00           1        0.00000        0.00000
+Recurse level: 3 (6)        0.00        0.00           1        0.00000        0.00000
+(Other)                     0.00        0.00           1        0.00000        0.00000
+--------------------  ----------  ----------  ----------  -------------  -------------
+Total                       0.00        0.00           4        0.00025        0.00000
+--------------------  ----------  ----------  ----------  -------------  -------------
+[Timer timed (per call in ms): Elapsed: 0.00926, CPU: 0.00833]
+Timer Set: Array_Recurse, Constructed at 09 Jun 2024 15:54:00, written at 15:54:00
+==================================================================================
+Timer                    Elapsed         CPU       Calls       Ela/Call       CPU/Call
+--------------------  ----------  ----------  ----------  -------------  -------------
+Recurse level: 1 (3)        0.00        0.00           1        0.00100        0.00000
+Recurse level: 2 (6)        0.00        0.00           1        0.00000        0.00000
+Recurse level: 3 (3)        0.00        0.00           1        0.00000        0.00000
+(Other)                     0.00        0.00           1        0.00000        0.00000
+--------------------  ----------  ----------  ----------  -------------  -------------
+Total                       0.00        0.00           4        0.00025        0.00000
+--------------------  ----------  ----------  ----------  -------------  -------------
+[Timer timed (per call in ms): Elapsed: 0.00917, CPU: 0.00917]
+Timer Set: Iteratively_Refine_Recurse, Constructed at 09 Jun 2024 15:54:00, written at 15:54:00
+===============================================================================================
+Timer                                            Elapsed         CPU       Calls       Ela/Call       CPU/Call
+--------------------------------------------  ----------  ----------  ----------  -------------  -------------
+set_Globals 1: MIN_VALUE / KEEP_NUM = 0 / 10        0.00        0.00           1        0.00000        0.00000
+SELECT 1: MIN_VALUE / KEEP_NUM = 10 / 10            0.10        0.09           1        0.10100        0.09000
+set_Globals: MIN_VALUE / KEEP_NUM = 10 / 30         0.00        0.00           1        0.00000        0.00000
+Pipe 3 rows: MIN_VALUE / KEEP_NUM = 10 / 30         0.10        0.10           1        0.10100        0.10000
+(Other)                                             0.00        0.00           1        0.00000        0.00000
+--------------------------------------------  ----------  ----------  ----------  -------------  -------------
+Total                                               0.20        0.19           5        0.04040        0.03800
+--------------------------------------------  ----------  ----------  ----------  -------------  -------------
+[Timer timed (per call in ms): Elapsed: 0.01000, CPU: 0.00900]
+Elapsed: 00:00:00.31
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+Pop_Table_Iterate
+old   2:   Item_Cat_Seqs.Iteratively_Refine_Iterate(p_keep_start      => &KEEP_START,
+new   2:   Item_Cat_Seqs.Iteratively_Refine_Iterate(p_keep_start      => 10,
+old   3:                                            p_keep_factor     => &KEEP_FACTOR);
+new   3:                                            p_keep_factor     => 3);
+2 running sums
+Timer Set: Pop_Table_Iterate, Constructed at 09 Jun 2024 15:54:00, written at 15:54:00
+======================================================================================
+Timer                  Elapsed         CPU       Calls       Ela/Call       CPU/Call
+------------------  ----------  ----------  ----------  -------------  -------------
+Initial delete (0)        0.00        0.00           1        0.00100        0.00000
+Initial insert (1)        0.00        0.00           1        0.00100        0.00000
+Insert paths 1 (3)        0.00        0.00           1        0.00000        0.00000
+Delete paths 1 (1)        0.00        0.00           1        0.00000        0.00000
+Insert paths 2 (7)        0.00        0.00           1        0.00000        0.00000
+Delete paths 2 (3)        0.00        0.00           1        0.00000        0.00000
+Insert paths 3 (6)        0.00        0.00           1        0.00100        0.00000
+Delete paths 3 (7)        0.00        0.00           1        0.00000        0.00000
+(Other)                   0.00        0.00           1        0.00000        0.00000
+------------------  ----------  ----------  ----------  -------------  -------------
+Total                     0.00        0.00           9        0.00033        0.00000
+------------------  ----------  ----------  ----------  -------------  -------------
+[Timer timed (per call in ms): Elapsed: 0.01086, CPU: 0.00968]
+Timer Set: Pop_Table_Iterate, Constructed at 09 Jun 2024 15:54:00, written at 15:54:00
+======================================================================================
+Timer                  Elapsed         CPU       Calls       Ela/Call       CPU/Call
+------------------  ----------  ----------  ----------  -------------  -------------
+Initial delete (6)        0.00        0.00           1        0.00000        0.00000
+Initial insert (1)        0.00        0.00           1        0.00100        0.00000
+Insert paths 1 (3)        0.00        0.00           1        0.00000        0.00000
+Delete paths 1 (1)        0.00        0.00           1        0.00000        0.00000
+Insert paths 2 (6)        0.00        0.00           1        0.00000        0.00000
+Delete paths 2 (3)        0.00        0.00           1        0.00000        0.00000
+Insert paths 3 (3)        0.00        0.00           1        0.00000        0.00000
+Delete paths 3 (6)        0.00        0.00           1        0.00000        0.00000
+(Other)                   0.00        0.00           1        0.00000        0.00000
+------------------  ----------  ----------  ----------  -------------  -------------
+Total                     0.00        0.00           9        0.00011        0.00000
+------------------  ----------  ----------  ----------  -------------  -------------
+[Timer timed (per call in ms): Elapsed: 0.00943, CPU: 0.00943]
+Timer Set: Iteratively_Refine_Iterate, Constructed at 09 Jun 2024 15:54:00, written at 15:54:00
+===============================================================================================
+Timer                                           Elapsed         CPU       Calls       Ela/Call       CPU/Call
+-------------------------------------------  ----------  ----------  ----------  -------------  -------------
+PTI 1: MIN_VALUE / KEEP_NUM = 0 / 10               0.10        0.09           1        0.10400        0.09000
+SELECT 1: MIN_VALUE / KEEP_NUM = 10 / 10           0.00        0.00           1        0.00200        0.00000
+PTI (final): MIN_VALUE / KEEP_NUM = 10 / 30        0.10        0.10           1        0.10100        0.10000
+(Other)                                            0.00        0.00           1        0.00000        0.00000
+-------------------------------------------  ----------  ----------  ----------  -------------  -------------
+Total                                              0.21        0.19           4        0.05175        0.04750
+-------------------------------------------  ----------  ----------  ----------  -------------  -------------
+[Timer timed (per call in ms): Elapsed: 0.00971, CPU: 0.00971]
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.31
+Iteratively_Refine_Iterate - path level
+
+Path Total Value Total Price  Rank
+---- ----------- ----------- -----
+245           12           5     1
+145           11           4     2
+314           10           5     3
+
+Elapsed: 00:00:00.00
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+old   2:      Item_Cat_Seqs.Init_Loop(p_keep_start      => &KEEP_START,
+new   2:      Item_Cat_Seqs.Init_Loop(p_keep_start      => 10,
+old   3:                              p_keep_factor     => &KEEP_FACTOR);
+new   3:                              p_keep_factor     => 3);
+2 running sums
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+Iteratively_Refine_RSF - path level
+
+Path Total Value Total Price  Rank
+---- ----------- ----------- -----
+245           12           5     1
+145           11           4     2
+314           10           5     3
+
+Just set context values: MIN_VALUE = 0, KEEP_NUM = 10
+Previously set context values: SEQ_TYPE = , SEQ_SIZE = 3, MAX_PRICE = 5, ITEM_WIDTH = 1, TOP_N = 3
+Just set context values: MIN_VALUE = 10, KEEP_NUM = 30
+Previously set context values: SEQ_TYPE = , SEQ_SIZE = 3, MAX_PRICE = 5, ITEM_WIDTH = 1, TOP_N = 3
+SQL_ID  6sdqpgq7azqur, child number 0
+-------------------------------------
+SELECT TOT_VALUE FROM RSF_IRK_IRS_TABS_V WHERE RNK = :B1
+Plan hash value: 2846612193
+--------------------------------------------------------------------------------------------------------------
+| Id  | Operation                                   | Name               | E-Rows |  OMem |  1Mem | Used-Mem |
+--------------------------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT                            |                    |        |       |       |          |
+|*  1 |  VIEW                                       | RSF_IRK_IRS_TABS_V |      2 |       |       |          |
+|*  2 |   WINDOW SORT PUSHED RANK                   |                    |      2 |  2048 |  2048 | 2048  (0)|
+|*  3 |    VIEW                                     |                    |      2 |       |       |          |
+|   4 |     UNION ALL (RECURSIVE WITH) BREADTH FIRST|                    |        |  2048 |  2048 | 2048  (0)|
+|*  5 |      INDEX UNIQUE SCAN                      | SYS_IOT_TOP_176977 |      1 |       |       |          |
+|   6 |      WINDOW SORT                            |                    |      1 |  9216 |  9216 | 8192  (0)|
+|   7 |       NESTED LOOPS                          |                    |      1 |       |       |          |
+|*  8 |        HASH JOIN OUTER                      |                    |      1 |  1055K|  1055K|  483K (0)|
+|   9 |         RECURSIVE WITH PUMP                 |                    |        |       |       |          |
+|  10 |         BUFFER SORT (REUSE)                 |                    |        | 73728 | 73728 |          |
+|  11 |          TABLE ACCESS FULL                  | ITEM_RUNNING_SUMS  |      2 |       |       |          |
+|* 12 |        INDEX RANGE SCAN                     | SYS_IOT_TOP_176977 |      1 |       |       |          |
+--------------------------------------------------------------------------------------------------------------
+Predicate Information (identified by operation id):
+---------------------------------------------------
+1 - filter("RNK"=:B1)
+2 - filter(ROW_NUMBER() OVER ( ORDER BY INTERNAL_FUNCTION("TOT_VALUE") DESC ,"TOT_PRICE")<=:B1)
+3 - filter("LEV"="SEQ_SIZE")
+5 - access("ITEM_RNK"=1)
+8 - access("IRS"."SLOT_INDEX"="TRW"."SEQ_SIZE"-"TRW"."LEV"-1)
+12 - access("IRK"."ITEM_RNK">="TRW"."ITEM_RNK"+1)
+filter(("IRK"."ITEM_RNK"<="IRK"."N_ITEMS"-("TRW"."SEQ_SIZE"-"TRW"."LEV"-1) AND
+"IRK"."MAX_ITEMS">=CASE "IRK"."CAT_ID" WHEN "TRW"."CAT_ID" THEN "TRW"."SAME_CATS"+1 ELSE 1 END  AND
+"TRW"."TOT_PRICE"+"IRK"."ITEM_PRICE"+NVL("IRS"."SUM_PRICE",0)<=TO_NUMBER(SYS_CONTEXT('RECURSION_CTX','
+MAX_PRICE')) AND "TRW"."TOT_VALUE"+"IRK"."ITEM_VALUE"+NVL("IRS"."SUM_VALUE",0)>=TO_NUMBER(SYS_CONTEXT(
+'RECURSION_CTX','MIN_VALUE')) AND "IRK"."MIN_REMAIN"<="TRW"."SEQ_SIZE"-("TRW"."LEV"+1)+LEAST(CASE
+"IRK"."CAT_ID" WHEN "TRW"."CAT_ID" THEN "TRW"."SAME_CATS"+1 ELSE 1 END ,"IRK"."MIN_ITEMS") AND
+("IRK"."CAT_ID"="TRW"."CAT_ID" OR "TRW"."SAME_CATS">="TRW"."MIN_ITEMS") AND
+("IRK"."CAT_ID"="TRW"."CAT_ID" OR "IRK"."CAT_ID"=NVL("TRW"."NEXT_CAT_ID","IRK"."CAT_ID"))))
+Note
+-----
+- dynamic statistics used: dynamic sampling (level=2)
+- Warning: basic plan statistics not available. These are only collected when:
+* hint 'gather_plan_statistics' is used for the statement or
+* parameter 'statistics_level' is set to 'ALL', at session or system level
+Timer Set: Iteratively_Refine_RSF, Constructed at 09 Jun 2024 15:54:00, written at 15:54:00
+===========================================================================================
+Timer                                            Elapsed         CPU       Calls       Ela/Call       CPU/Call
+--------------------------------------------  ----------  ----------  ----------  -------------  -------------
+SELECT 1: MIN_VALUE / KEEP_NUM = 10 / 10            0.01        0.01           1        0.01300        0.01000
+Set_Contexts: MIN_VALUE / KEEP_NUM = 10 / 30        0.00        0.00           1        0.00000        0.00000
+Pipe 3 rows: MIN_VALUE / KEEP_NUM = 10 / 30         0.01        0.01           1        0.01200        0.01000
+(Other)                                             0.20        0.19           1        0.20000        0.19000
+--------------------------------------------  ----------  ----------  ----------  -------------  -------------
+Total                                               0.23        0.21           4        0.05625        0.05250
+--------------------------------------------  ----------  ----------  ----------  -------------  -------------
+[Timer timed (per call in ms): Elapsed: 0.00990, CPU: 0.00792]
+Elapsed: 00:00:00.33
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+Timer Set: Item_Cat_Seqs_Loop, Constructed at 09 Jun 2024 15:53:59, written at 15:54:01
+=======================================================================================
+Timer                                       Elapsed         CPU       Calls       Ela/Call       CPU/Call
+---------------------------------------  ----------  ----------  ----------  -------------  -------------
+Iteratively_Refine_Recurse - path level        0.32        0.32           1        0.32400        0.32000
+Iteratively_Refine_Recurse - item level        0.32        0.28           1        0.31600        0.28000
+Iteratively_Refine_Iterate - path level        0.32        0.29           1        0.31500        0.29000
+Iteratively_Refine_RSF - path level            0.34        0.30           1        0.33800        0.30000
+(Other)                                        0.00        0.00           1        0.00100        0.00000
+---------------------------------------  ----------  ----------  ----------  -------------  -------------
+Total                                          1.29        1.19           5        0.25880        0.23800
+---------------------------------------  ----------  ----------  ----------  -------------  -------------
+[Timer timed (per call in ms): Elapsed: 0.00990, CPU: 0.00891]
+
+PL/SQL procedure successfully completed.
+
+
+'END:'||TO_CHAR(SYSDATE,'DD-MON-YY
+----------------------------------
+End: 09-JUN-2024 15:54:01
+

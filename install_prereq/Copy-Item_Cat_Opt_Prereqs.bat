@@ -1,0 +1,1 @@
+pwsh -file .\Copy-Item_Cat_Opt_Prereqs.ps1  > .\Copy-Item_Cat_Opt_Prereqs.out 2> .\Copy-Item_Cat_Opt_Prereqs.err

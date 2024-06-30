@@ -1,0 +1,112 @@
+
+Database             Time                 Version
+-------------------- -------------------- ------------------------------
+Start: ORCL          10-JUN-2024 23:37:06 Version 21.3.0.0.0
+
+
+PL/SQL procedure successfully completed.
+
+Solution via view rsf_post_valid_v...
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+
+Path Total Value Total Price  Rank
+---- ----------- ----------- -----
+245           12           5     1
+145           11           4     2
+134           10           5     3
+
+Elapsed: 00:00:00.02
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+SQL_ID  cpgytz3vg2sxw, child number 0
+-------------------------------------
+SELECT /*+ gather_plan_statistics POST_VALID_V */ path,
+tot_value,        tot_price,        rnk   FROM rsf_post_valid_v  WHERE
+rnk <= :TOP_N ORDER BY rnk, tot_price
+Plan hash value: 1417964718
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Id  | Operation                                    | Name                        | Starts | E-Rows | A-Rows |   A-Time   | Buffers |  OMem |  1Mem | Used-Mem |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT                             |                             |      1 |        |      3 |00:00:00.01 |      78 |       |       |          |
+|   1 |  SORT ORDER BY                               |                             |      1 |      2 |      3 |00:00:00.01 |      78 |  2048 |  2048 | 2048  (0)|
+|*  2 |   VIEW                                       | RSF_POST_VALID_V            |      1 |      2 |      3 |00:00:00.01 |      78 |       |       |          |
+|   3 |    TEMP TABLE TRANSFORMATION                 |                             |      1 |        |      3 |00:00:00.01 |      78 |       |       |          |
+|   4 |     LOAD AS SELECT (CURSOR DURATION MEMORY)  | SYS_TEMP_0FD9D6C4A_147E856B |      1 |        |      0 |00:00:00.01 |       7 |  1024 |  1024 |          |
+|   5 |      UNION ALL (RECURSIVE WITH) BREADTH FIRST|                             |      1 |        |     42 |00:00:00.01 |       7 |  2048 |  2048 | 2048  (0)|
+|   6 |       FAST DUAL                              |                             |      1 |      1 |      1 |00:00:00.01 |       0 |       |       |          |
+|   7 |       NESTED LOOPS                           |                             |      4 |      1 |     41 |00:00:00.01 |       7 |       |       |          |
+|   8 |        NESTED LOOPS                          |                             |      4 |      1 |     41 |00:00:00.01 |       4 |       |       |          |
+|   9 |         RECURSIVE WITH PUMP                  |                             |      4 |        |     22 |00:00:00.01 |       0 |       |       |          |
+|* 10 |         INDEX RANGE SCAN                     | SYS_C0039934                |     22 |      1 |     41 |00:00:00.01 |       4 |       |       |          |
+|  11 |        TABLE ACCESS BY INDEX ROWID           | SMALL_ITEMS                 |     41 |      1 |     41 |00:00:00.01 |       3 |       |       |          |
+|* 12 |     WINDOW SORT PUSHED RANK                  |                             |      1 |      2 |      3 |00:00:00.01 |      71 |  2048 |  2048 | 2048  (0)|
+|* 13 |      HASH JOIN ANTI NA                       |                             |      1 |      2 |      6 |00:00:00.01 |      71 |  1506K|  1506K|  911K (0)|
+|  14 |       NESTED LOOPS                           |                             |      1 |      2 |      6 |00:00:00.01 |       0 |       |       |          |
+|  15 |        FAST DUAL                             |                             |      1 |      1 |      1 |00:00:00.01 |       0 |       |       |          |
+|* 16 |        VIEW                                  |                             |      1 |      2 |      6 |00:00:00.01 |       0 |       |       |          |
+|  17 |         TABLE ACCESS FULL                    | SYS_TEMP_0FD9D6C4A_147E856B |      1 |      2 |     42 |00:00:00.01 |       0 |       |       |          |
+|  18 |       VIEW                                   | VW_NSO_1                    |      1 |      1 |      4 |00:00:00.01 |      71 |       |       |          |
+|* 19 |        FILTER                                |                             |      1 |        |      4 |00:00:00.01 |      71 |       |       |          |
+|  20 |         HASH GROUP BY                        |                             |      1 |      1 |     40 |00:00:00.01 |      71 |   684K|   684K|          |
+|  21 |          VIEW                                |                             |      1 |      2 |     62 |00:00:00.01 |      71 |       |       |          |
+|  22 |           MERGE JOIN PARTITION OUTER         |                             |      1 |      2 |     62 |00:00:00.01 |      71 |       |       |          |
+|  23 |            SORT JOIN                         |                             |     21 |      2 |     41 |00:00:00.01 |       7 |  2048 |  2048 | 2048  (0)|
+|  24 |             VIEW                             | CATEGORIES                  |      1 |      2 |      2 |00:00:00.01 |       7 |       |       |          |
+|* 25 |              TABLE ACCESS FULL               | SMALL_CATEGORIES            |      1 |      2 |      2 |00:00:00.01 |       7 |       |       |          |
+|* 26 |            SORT PARTITION JOIN               |                             |     41 |      2 |     60 |00:00:00.01 |      64 |  9216 |  9216 | 8192  (0)|
+|  27 |             VIEW                             |                             |      1 |      2 |     60 |00:00:00.01 |      64 |       |       |          |
+|  28 |              NESTED LOOPS                    |                             |      1 |      2 |     60 |00:00:00.01 |      64 |       |       |          |
+|  29 |               NESTED LOOPS                   |                             |      1 |      2 |     60 |00:00:00.01 |       4 |       |       |          |
+|  30 |                NESTED LOOPS                  |                             |      1 |      2 |     60 |00:00:00.01 |       0 |       |       |          |
+|  31 |                 NESTED LOOPS                 |                             |      1 |      2 |     20 |00:00:00.01 |       0 |       |       |          |
+|  32 |                  FAST DUAL                   |                             |      1 |      1 |      1 |00:00:00.01 |       0 |       |       |          |
+|* 33 |                  VIEW                        |                             |      1 |      2 |     20 |00:00:00.01 |       0 |       |       |          |
+|  34 |                   TABLE ACCESS FULL          | SYS_TEMP_0FD9D6C4A_147E856B |      1 |      2 |     42 |00:00:00.01 |       0 |       |       |          |
+|  35 |                 VIEW                         | VW_LAT_CBC21642             |     20 |      1 |     60 |00:00:00.01 |       0 |       |       |          |
+|  36 |                  CONNECT BY WITHOUT FILTERING|                             |     20 |        |     60 |00:00:00.01 |       0 |  2048 |  2048 | 2048  (0)|
+|  37 |                   FAST DUAL                  |                             |     20 |      1 |     20 |00:00:00.01 |       0 |       |       |          |
+|* 38 |                INDEX UNIQUE SCAN             | SYS_C0039934                |     60 |      1 |     60 |00:00:00.01 |       4 |       |       |          |
+|  39 |               TABLE ACCESS BY INDEX ROWID    | SMALL_ITEMS                 |     60 |      1 |     60 |00:00:00.01 |      60 |       |       |          |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Predicate Information (identified by operation id):
+---------------------------------------------------
+2 - filter("RNK"<=:TOP_N)
+10 - access("ID">"TRW"."ITEM_ID")
+12 - filter(ROW_NUMBER() OVER ( ORDER BY INTERNAL_FUNCTION("TRW"."TOT_VALUE") DESC ,"TRW"."TOT_PRICE")<=:TOP_N)
+13 - access("TRW"."PATH"="PATH")
+16 - filter(("TRW"."LEV"=TO_NUMBER(SYS_CONTEXT('RECURSION_CTX','SEQ_SIZE')) AND
+"TRW"."TOT_PRICE"<=TO_NUMBER(SYS_CONTEXT('RECURSION_CTX','MAX_PRICE'))))
+19 - filter(("CAT"."MIN_ITEMS">COUNT("PSP"."ITEM_ID") OR "CAT"."MAX_ITEMS"<COUNT("PSP"."ITEM_ID")))
+25 - filter("ID"<>'AL')
+26 - access("PSP"."CATEGORY_ID"="CAT"."ID")
+filter("PSP"."CATEGORY_ID"="CAT"."ID")
+33 - filter("TRW"."LEV"=TO_NUMBER(SYS_CONTEXT('RECURSION_CTX','SEQ_SIZE')))
+38 - access("ID"=SUBSTR("TRW"."PATH",("IND"."ITEM_INDEX"-1)*TO_NUMBER(SYS_CONTEXT('RECURSION_CTX','ITEM_WIDTH'))+1,TO_NUMBER(SYS_CONTEXT('RECURSION_CTX
+','ITEM_WIDTH'))))
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.24
+Timer Set: Item_Cat_Seqs_PV_RSF, Constructed at 10 Jun 2024 23:37:06, written at 23:37:06
+=========================================================================================
+Timer                Elapsed         CPU       Calls       Ela/Call       CPU/Call
+----------------  ----------  ----------  ----------  -------------  -------------
+rsf_post_valid_v        0.02        0.01           1        0.02200        0.01000
+(Other)                 0.24        0.24           1        0.24200        0.24000
+----------------  ----------  ----------  ----------  -------------  -------------
+Total                   0.26        0.25           2        0.13200        0.12500
+----------------  ----------  ----------  ----------  -------------  -------------
+[Timer timed (per call in ms): Elapsed: 0.00934, CPU: 0.00849]
+
+PL/SQL procedure successfully completed.
+
+
+'END:'||TO_CHAR(SYSDATE,'DD-MON-YY
+----------------------------------
+End: 10-JUN-2024 23:37:06
+

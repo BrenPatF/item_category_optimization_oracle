@@ -1,0 +1,1309 @@
+Unit Test Report: Best Item Category Combis - RSF_Post_Valid
+============================================================
+
+      #    Category Set                            Scenario                       Fails (of 2)  Status 
+      ---  --------------------------------------  -----------------------------  ------------  -------
+      1    Choose Range (r / n)                    Choose 1 / n                   0             SUCCESS
+      2    Choose Range (r / n)                    Choose r / n (r < n)           0             SUCCESS
+      3    Choose Range (r / n)                    Choose n / n                   0             SUCCESS
+      4    ItemCat Multiplicity                    No itemcats                    0             SUCCESS
+      5    ItemCat Multiplicity                    One itemcat                    0             SUCCESS
+      6    ItemCat Multiplicity                    Multiple itemcats              0             SUCCESS
+      7    ItemCat Range                           Itemcat min only               0             SUCCESS
+      8    ItemCat Range                           Itemcat max only               0             SUCCESS
+      9    ItemCat Range                           Itemcat with min < max         0             SUCCESS
+      10   ItemCat Range                           Itemcat with min = max         0             SUCCESS
+      11   Solution Multiplicity (Actual / Top N)  No solution (want top N)       0             SUCCESS
+      12   Solution Multiplicity (Actual / Top N)  1 solution (want top 1)        0             SUCCESS
+      13   Solution Multiplicity (Actual / Top N)  N solutions (want top N)       0             SUCCESS
+      14   Solution Multiplicity (Actual / Top N)  < N solutions (want top N)     0             SUCCESS
+      15   Constraint Activity                     No active constraint           0             SUCCESS
+      16   Constraint Activity                     Price maximum active           0             SUCCESS
+      17   Constraint Activity                     Itemcat minimum active         0             SUCCESS
+      18   Constraint Activity                     Itemcat maximum active         0             SUCCESS
+      19   Constraint Infeasibility                Solutions exist                0             SUCCESS
+      20   Constraint Infeasibility                No solution - price maximum    0             SUCCESS
+      21   Constraint Infeasibility                No solution - itemcat minimum  0             SUCCESS
+      22   Constraint Infeasibility                No solution - itemcat maximum  0             SUCCESS
+
+Test scenarios: 0 failed of 22: SUCCESS
+=======================================
+Tested: 2024-05-26 13:10:23, Formatted: 2024-05-26 13:10:23
+
+SCENARIO 1: Choose 1 / n [Category Set: Choose Range (r / n)] {
+===============================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Category {
+      ===================
+
+            #  Id  Min#  Max#
+            -  --  ----  ----
+            1  C1  0     2   
+            2  AL  1     1   
+
+      }
+      =
+
+      GROUP 2: Item {
+      ===============
+
+            #  Id  Category  Price  Value
+            -  --  --------  -----  -----
+            1  I1  C1        5      5    
+            2  I2  C1        6      6    
+
+      }
+      =
+
+      GROUP 3: Scalars {
+      ==================
+
+            #  Size  Max Price  Top N  Min Value  Keep#
+            -  ----  ---------  -----  ---------  -----
+            1  1     20         1      0          10   
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Solution {
+      ===================
+
+            #  Path  Total Price  Total Value
+            -  ----  -----------  -----------
+            1  I2    6            6          
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 2: SUCCESS
+========================
+
+SCENARIO 2: Choose r / n (r < n) [Category Set: Choose Range (r / n)] {
+=======================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Category {
+      ===================
+
+            #  Id  Min#  Max#
+            -  --  ----  ----
+            1  C1  0     2   
+            2  AL  2     2   
+
+      }
+      =
+
+      GROUP 2: Item {
+      ===============
+
+            #  Id  Category  Price  Value
+            -  --  --------  -----  -----
+            1  I1  C1        5      15   
+            2  I2  C1        6      16   
+            3  I3  C1        7      17   
+
+      }
+      =
+
+      GROUP 3: Scalars {
+      ==================
+
+            #  Size  Max Price  Top N  Min Value  Keep#
+            -  ----  ---------  -----  ---------  -----
+            1  2     20         3      0          10   
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Solution {
+      ===================
+
+            #  Path  Total Price  Total Value
+            -  ----  -----------  -----------
+            1  I2I3  13           33         
+            2  I1I3  12           32         
+            3  I1I2  11           31         
+
+      } 0 failed of 3: SUCCESS
+      ========================
+
+      GROUP 2: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 2: SUCCESS
+========================
+
+SCENARIO 3: Choose n / n [Category Set: Choose Range (r / n)] {
+===============================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Category {
+      ===================
+
+            #  Id  Min#  Max#
+            -  --  ----  ----
+            1  C1  0     3   
+            2  AL  3     3   
+
+      }
+      =
+
+      GROUP 2: Item {
+      ===============
+
+            #  Id  Category  Price  Value
+            -  --  --------  -----  -----
+            1  I1  C1        5      15   
+            2  I2  C1        6      16   
+            3  I3  C1        7      17   
+
+      }
+      =
+
+      GROUP 3: Scalars {
+      ==================
+
+            #  Size  Max Price  Top N  Min Value  Keep#
+            -  ----  ---------  -----  ---------  -----
+            1  3     20         3      0          10   
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Solution {
+      ===================
+
+            #  Path    Total Price  Total Value
+            -  ------  -----------  -----------
+            1  I1I2I3  18           48         
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 2: SUCCESS
+========================
+
+SCENARIO 4: No itemcats [Category Set: ItemCat Multiplicity] {
+==============================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Category {
+      ===================
+
+            #  Id  Min#  Max#
+            -  --  ----  ----
+            1  C1  0     1000
+            2  AL  3     3   
+
+      }
+      =
+
+      GROUP 2: Item {
+      ===============
+
+            #  Id  Category  Price  Value
+            -  --  --------  -----  -----
+            1  I1  C1        5      15   
+            2  I2  C1        6      16   
+            3  I3  C1        7      17   
+
+      }
+      =
+
+      GROUP 3: Scalars {
+      ==================
+
+            #  Size  Max Price  Top N  Min Value  Keep#
+            -  ----  ---------  -----  ---------  -----
+            1  3     20         3      0          10   
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Solution {
+      ===================
+
+            #  Path    Total Price  Total Value
+            -  ------  -----------  -----------
+            1  I1I2I3  18           48         
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 2: SUCCESS
+========================
+
+SCENARIO 5: One itemcat [Category Set: ItemCat Multiplicity] {
+==============================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Category {
+      ===================
+
+            #  Id  Min#  Max#
+            -  --  ----  ----
+            1  C1  0     2   
+            2  AL  2     2   
+
+      }
+      =
+
+      GROUP 2: Item {
+      ===============
+
+            #  Id  Category  Price  Value
+            -  --  --------  -----  -----
+            1  I1  C1        5      15   
+            2  I2  C1        6      16   
+            3  I3  C1        7      17   
+
+      }
+      =
+
+      GROUP 3: Scalars {
+      ==================
+
+            #  Size  Max Price  Top N  Min Value  Keep#
+            -  ----  ---------  -----  ---------  -----
+            1  2     20         3      0          10   
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Solution {
+      ===================
+
+            #  Path  Total Price  Total Value
+            -  ----  -----------  -----------
+            1  I2I3  13           33         
+            2  I1I3  12           32         
+            3  I1I2  11           31         
+
+      } 0 failed of 3: SUCCESS
+      ========================
+
+      GROUP 2: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 2: SUCCESS
+========================
+
+SCENARIO 6: Multiple itemcats [Category Set: ItemCat Multiplicity] {
+====================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Category {
+      ===================
+
+            #  Id  Min#  Max#
+            -  --  ----  ----
+            1  C1  0     2   
+            2  C2  0     2   
+            3  AL  2     2   
+
+      }
+      =
+
+      GROUP 2: Item {
+      ===============
+
+            #  Id  Category  Price  Value
+            -  --  --------  -----  -----
+            1  I1  C1        5      15   
+            2  I2  C1        6      16   
+            3  I3  C2        7      17   
+
+      }
+      =
+
+      GROUP 3: Scalars {
+      ==================
+
+            #  Size  Max Price  Top N  Min Value  Keep#
+            -  ----  ---------  -----  ---------  -----
+            1  2     20         3      0          10   
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Solution {
+      ===================
+
+            #  Path  Total Price  Total Value
+            -  ----  -----------  -----------
+            1  I2I3  13           33         
+            2  I1I3  12           32         
+            3  I1I2  11           31         
+
+      } 0 failed of 3: SUCCESS
+      ========================
+
+      GROUP 2: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 2: SUCCESS
+========================
+
+SCENARIO 7: Itemcat min only [Category Set: ItemCat Range] {
+============================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Category {
+      ===================
+
+            #  Id  Min#  Max#
+            -  --  ----  ----
+            1  C1  1     2   
+            2  C2  0     2   
+            3  AL  1     1   
+
+      }
+      =
+
+      GROUP 2: Item {
+      ===============
+
+            #  Id  Category  Price  Value
+            -  --  --------  -----  -----
+            1  I1  C1        5      5    
+            2  I2  C2        10     10   
+
+      }
+      =
+
+      GROUP 3: Scalars {
+      ==================
+
+            #  Size  Max Price  Top N  Min Value  Keep#
+            -  ----  ---------  -----  ---------  -----
+            1  1     20         3      0          10   
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Solution {
+      ===================
+
+            #  Path  Total Price  Total Value
+            -  ----  -----------  -----------
+            1  I1    5            5          
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 2: SUCCESS
+========================
+
+SCENARIO 8: Itemcat max only [Category Set: ItemCat Range] {
+============================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Category {
+      ===================
+
+            #  Id  Min#  Max#
+            -  --  ----  ----
+            1  C1  0     2   
+            2  C2  0     0   
+            3  AL  1     1   
+
+      }
+      =
+
+      GROUP 2: Item {
+      ===============
+
+            #  Id  Category  Price  Value
+            -  --  --------  -----  -----
+            1  I1  C1        5      5    
+            2  I2  C2        10     10   
+
+      }
+      =
+
+      GROUP 3: Scalars {
+      ==================
+
+            #  Size  Max Price  Top N  Min Value  Keep#
+            -  ----  ---------  -----  ---------  -----
+            1  1     20         3      0          10   
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Solution {
+      ===================
+
+            #  Path  Total Price  Total Value
+            -  ----  -----------  -----------
+            1  I1    5            5          
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 2: SUCCESS
+========================
+
+SCENARIO 9: Itemcat with min < max [Category Set: ItemCat Range] {
+==================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Category {
+      ===================
+
+            #  Id  Min#  Max#
+            -  --  ----  ----
+            1  C1  1     2   
+            2  C2  1     2   
+            3  AL  2     2   
+
+      }
+      =
+
+      GROUP 2: Item {
+      ===============
+
+            #  Id  Category  Price  Value
+            -  --  --------  -----  -----
+            1  I1  C1        5      5    
+            2  I2  C2        10     10   
+            3  I3  C1        0      10   
+
+      }
+      =
+
+      GROUP 3: Scalars {
+      ==================
+
+            #  Size  Max Price  Top N  Min Value  Keep#
+            -  ----  ---------  -----  ---------  -----
+            1  2     20         3      0          10   
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Solution {
+      ===================
+
+            #  Path  Total Price  Total Value
+            -  ----  -----------  -----------
+            1  I2I3  10           20         
+            2  I1I2  15           15         
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 2: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 2: SUCCESS
+========================
+
+SCENARIO 10: Itemcat with min = max [Category Set: ItemCat Range] {
+===================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Category {
+      ===================
+
+            #  Id  Min#  Max#
+            -  --  ----  ----
+            1  C1  1     1   
+            2  C2  0     2   
+            3  AL  2     2   
+
+      }
+      =
+
+      GROUP 2: Item {
+      ===============
+
+            #  Id  Category  Price  Value
+            -  --  --------  -----  -----
+            1  I1  C1        5      5    
+            2  I2  C2        10     10   
+            3  I3  C1        7      10   
+
+      }
+      =
+
+      GROUP 3: Scalars {
+      ==================
+
+            #  Size  Max Price  Top N  Min Value  Keep#
+            -  ----  ---------  -----  ---------  -----
+            1  2     20         3      0          10   
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Solution {
+      ===================
+
+            #  Path  Total Price  Total Value
+            -  ----  -----------  -----------
+            1  I2I3  17           20         
+            2  I1I2  15           15         
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 2: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 2: SUCCESS
+========================
+
+SCENARIO 11: No solution (want top N) [Category Set: Solution Multiplicity (Actual / Top N)] {
+==============================================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Category {
+      ===================
+
+            #  Id  Min#  Max#
+            -  --  ----  ----
+            1  C1  1     2   
+            2  C2  1     2   
+            3  AL  2     2   
+
+      }
+      =
+
+      GROUP 2: Item {
+      ===============
+
+            #  Id  Category  Price  Value
+            -  --  --------  -----  -----
+            1  I1  C1        5      5    
+            2  I2  C2        10     10   
+            3  I3  C1        7      10   
+
+      }
+      =
+
+      GROUP 3: Scalars {
+      ==================
+
+            #  Size  Max Price  Top N  Min Value  Keep#
+            -  ----  ---------  -----  ---------  -----
+            1  2     10         3      0          10   
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Solution: Empty as expected: SUCCESS
+      =============================================
+
+      GROUP 2: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 2: SUCCESS
+========================
+
+SCENARIO 12: 1 solution (want top 1) [Category Set: Solution Multiplicity (Actual / Top N)] {
+=============================================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Category {
+      ===================
+
+            #  Id  Min#  Max#
+            -  --  ----  ----
+            1  C1  1     2   
+            2  C2  0     2   
+            3  AL  2     2   
+
+      }
+      =
+
+      GROUP 2: Item {
+      ===============
+
+            #  Id  Category  Price  Value
+            -  --  --------  -----  -----
+            1  I1  C1        5      5    
+            2  I2  C2        10     10   
+            3  I3  C1        7      10   
+
+      }
+      =
+
+      GROUP 3: Scalars {
+      ==================
+
+            #  Size  Max Price  Top N  Min Value  Keep#
+            -  ----  ---------  -----  ---------  -----
+            1  2     12         3      0          10   
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Solution {
+      ===================
+
+            #  Path  Total Price  Total Value
+            -  ----  -----------  -----------
+            1  I1I3  12           15         
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 2: SUCCESS
+========================
+
+SCENARIO 13: N solutions (want top N) [Category Set: Solution Multiplicity (Actual / Top N)] {
+==============================================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Category {
+      ===================
+
+            #  Id  Min#  Max#
+            -  --  ----  ----
+            1  C1  0     2   
+            2  C2  0     2   
+            3  AL  2     2   
+
+      }
+      =
+
+      GROUP 2: Item {
+      ===============
+
+            #  Id  Category  Price  Value
+            -  --  --------  -----  -----
+            1  I1  C1        5      5    
+            2  I2  C2        10     10   
+            3  I3  C1        7      15   
+
+      }
+      =
+
+      GROUP 3: Scalars {
+      ==================
+
+            #  Size  Max Price  Top N  Min Value  Keep#
+            -  ----  ---------  -----  ---------  -----
+            1  2     25         2      0          10   
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Solution {
+      ===================
+
+            #  Path  Total Price  Total Value
+            -  ----  -----------  -----------
+            1  I2I3  17           25         
+            2  I1I3  12           20         
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 2: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 2: SUCCESS
+========================
+
+SCENARIO 14: < N solutions (want top N) [Category Set: Solution Multiplicity (Actual / Top N)] {
+================================================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Category {
+      ===================
+
+            #  Id  Min#  Max#
+            -  --  ----  ----
+            1  C1  0     2   
+            2  C2  0     2   
+            3  AL  2     2   
+
+      }
+      =
+
+      GROUP 2: Item {
+      ===============
+
+            #  Id  Category  Price  Value
+            -  --  --------  -----  -----
+            1  I1  C1        5      5    
+            2  I2  C2        10     10   
+            3  I3  C1        7      15   
+
+      }
+      =
+
+      GROUP 3: Scalars {
+      ==================
+
+            #  Size  Max Price  Top N  Min Value  Keep#
+            -  ----  ---------  -----  ---------  -----
+            1  2     15         3      0          10   
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Solution {
+      ===================
+
+            #  Path  Total Price  Total Value
+            -  ----  -----------  -----------
+            1  I1I3  12           20         
+            2  I1I2  15           15         
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 2: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 2: SUCCESS
+========================
+
+SCENARIO 15: No active constraint [Category Set: Constraint Activity] {
+=======================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Category {
+      ===================
+
+            #  Id  Min#  Max#
+            -  --  ----  ----
+            1  C1  0     3   
+            2  C2  0     3   
+            3  AL  2     2   
+
+      }
+      =
+
+      GROUP 2: Item {
+      ===============
+
+            #  Id  Category  Price  Value
+            -  --  --------  -----  -----
+            1  I1  C1        5      5    
+            2  I2  C2        10     10   
+            3  I3  C1        7      15   
+
+      }
+      =
+
+      GROUP 3: Scalars {
+      ==================
+
+            #  Size  Max Price  Top N  Min Value  Keep#
+            -  ----  ---------  -----  ---------  -----
+            1  2     50         3      0          10   
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Solution {
+      ===================
+
+            #  Path  Total Price  Total Value
+            -  ----  -----------  -----------
+            1  I2I3  17           25         
+            2  I1I3  12           20         
+            3  I1I2  15           15         
+
+      } 0 failed of 3: SUCCESS
+      ========================
+
+      GROUP 2: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 2: SUCCESS
+========================
+
+SCENARIO 16: Price maximum active [Category Set: Constraint Activity] {
+=======================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Category {
+      ===================
+
+            #  Id  Min#  Max#
+            -  --  ----  ----
+            1  C1  0     3   
+            2  C2  0     3   
+            3  AL  2     2   
+
+      }
+      =
+
+      GROUP 2: Item {
+      ===============
+
+            #  Id  Category  Price  Value
+            -  --  --------  -----  -----
+            1  I1  C1        5      5    
+            2  I2  C2        10     10   
+            3  I3  C1        7      15   
+
+      }
+      =
+
+      GROUP 3: Scalars {
+      ==================
+
+            #  Size  Max Price  Top N  Min Value  Keep#
+            -  ----  ---------  -----  ---------  -----
+            1  2     15         3      0          10   
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Solution {
+      ===================
+
+            #  Path  Total Price  Total Value
+            -  ----  -----------  -----------
+            1  I1I3  12           20         
+            2  I1I2  15           15         
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 2: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 2: SUCCESS
+========================
+
+SCENARIO 17: Itemcat minimum active [Category Set: Constraint Activity] {
+=========================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Category {
+      ===================
+
+            #  Id  Min#  Max#
+            -  --  ----  ----
+            1  C1  0     3   
+            2  C2  1     3   
+            3  AL  2     2   
+
+      }
+      =
+
+      GROUP 2: Item {
+      ===============
+
+            #  Id  Category  Price  Value
+            -  --  --------  -----  -----
+            1  I1  C1        5      5    
+            2  I2  C2        10     10   
+            3  I3  C1        7      15   
+
+      }
+      =
+
+      GROUP 3: Scalars {
+      ==================
+
+            #  Size  Max Price  Top N  Min Value  Keep#
+            -  ----  ---------  -----  ---------  -----
+            1  2     50         3      0          10   
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Solution {
+      ===================
+
+            #  Path  Total Price  Total Value
+            -  ----  -----------  -----------
+            1  I2I3  17           25         
+            2  I1I2  15           15         
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 2: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 2: SUCCESS
+========================
+
+SCENARIO 18: Itemcat maximum active [Category Set: Constraint Activity] {
+=========================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Category {
+      ===================
+
+            #  Id  Min#  Max#
+            -  --  ----  ----
+            1  C1  0     1   
+            2  C2  0     3   
+            3  AL  2     2   
+
+      }
+      =
+
+      GROUP 2: Item {
+      ===============
+
+            #  Id  Category  Price  Value
+            -  --  --------  -----  -----
+            1  I1  C1        5      5    
+            2  I2  C2        10     10   
+            3  I3  C1        7      15   
+
+      }
+      =
+
+      GROUP 3: Scalars {
+      ==================
+
+            #  Size  Max Price  Top N  Min Value  Keep#
+            -  ----  ---------  -----  ---------  -----
+            1  2     50         3      0          10   
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Solution {
+      ===================
+
+            #  Path  Total Price  Total Value
+            -  ----  -----------  -----------
+            1  I2I3  17           25         
+            2  I1I2  15           15         
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 2: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 2: SUCCESS
+========================
+
+SCENARIO 19: Solutions exist [Category Set: Constraint Infeasibility] {
+=======================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Category {
+      ===================
+
+            #  Id  Min#  Max#
+            -  --  ----  ----
+            1  C1  0     3   
+            2  C2  1     3   
+            3  AL  2     2   
+
+      }
+      =
+
+      GROUP 2: Item {
+      ===============
+
+            #  Id  Category  Price  Value
+            -  --  --------  -----  -----
+            1  I1  C1        5      5    
+            2  I2  C2        10     10   
+            3  I3  C1        7      15   
+
+      }
+      =
+
+      GROUP 3: Scalars {
+      ==================
+
+            #  Size  Max Price  Top N  Min Value  Keep#
+            -  ----  ---------  -----  ---------  -----
+            1  2     50         3      0          10   
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Solution {
+      ===================
+
+            #  Path  Total Price  Total Value
+            -  ----  -----------  -----------
+            1  I2I3  17           25         
+            2  I1I2  15           15         
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 2: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 2: SUCCESS
+========================
+
+SCENARIO 20: No solution - price maximum [Category Set: Constraint Infeasibility] {
+===================================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Category {
+      ===================
+
+            #  Id  Min#  Max#
+            -  --  ----  ----
+            1  C1  0     3   
+            2  C2  1     3   
+            3  AL  2     2   
+
+      }
+      =
+
+      GROUP 2: Item {
+      ===============
+
+            #  Id  Category  Price  Value
+            -  --  --------  -----  -----
+            1  I1  C1        5      5    
+            2  I2  C2        10     10   
+            3  I3  C1        7      15   
+
+      }
+      =
+
+      GROUP 3: Scalars {
+      ==================
+
+            #  Size  Max Price  Top N  Min Value  Keep#
+            -  ----  ---------  -----  ---------  -----
+            1  2     11         3      0          10   
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Solution: Empty as expected: SUCCESS
+      =============================================
+
+      GROUP 2: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 2: SUCCESS
+========================
+
+SCENARIO 21: No solution - itemcat minimum [Category Set: Constraint Infeasibility] {
+=====================================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Category {
+      ===================
+
+            #  Id  Min#  Max#
+            -  --  ----  ----
+            1  C1  0     3   
+            2  C2  2     3   
+            3  AL  2     2   
+
+      }
+      =
+
+      GROUP 2: Item {
+      ===============
+
+            #  Id  Category  Price  Value
+            -  --  --------  -----  -----
+            1  I1  C1        5      5    
+            2  I2  C2        10     10   
+            3  I3  C1        7      15   
+
+      }
+      =
+
+      GROUP 3: Scalars {
+      ==================
+
+            #  Size  Max Price  Top N  Min Value  Keep#
+            -  ----  ---------  -----  ---------  -----
+            1  2     50         3      0          10   
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Solution: Empty as expected: SUCCESS
+      =============================================
+
+      GROUP 2: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 2: SUCCESS
+========================
+
+SCENARIO 22: No solution - itemcat maximum [Category Set: Constraint Infeasibility] {
+=====================================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Category {
+      ===================
+
+            #  Id  Min#  Max#
+            -  --  ----  ----
+            1  C1  0     1   
+            2  C2  1     1   
+            3  AL  3     3   
+
+      }
+      =
+
+      GROUP 2: Item {
+      ===============
+
+            #  Id  Category  Price  Value
+            -  --  --------  -----  -----
+            1  I1  C1        5      5    
+            2  I2  C2        10     10   
+            3  I3  C1        7      15   
+
+      }
+      =
+
+      GROUP 3: Scalars {
+      ==================
+
+            #  Size  Max Price  Top N  Min Value  Keep#
+            -  ----  ---------  -----  ---------  -----
+            1  3     50         3      0          10   
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Solution: Empty as expected: SUCCESS
+      =============================================
+
+      GROUP 2: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 2: SUCCESS
+========================

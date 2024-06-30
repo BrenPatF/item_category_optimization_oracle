@@ -1,0 +1,1 @@
+pwsh .\Format-JSON-Ico.ps1  > .\Format-JSON-Ico.out 2> .\Format-JSON-Ico.err

@@ -1,0 +1,1 @@
+pwsh -file .\Test-Format-Ico.ps1  > .\Test-Format-Ico.out 2> .\Test-Format-Ico.err

@@ -1,0 +1,353 @@
+
+Database             Time                 Version
+-------------------- -------------------- ------------------------------
+Start: ORCL          09-JUN-2024 15:53:56 Version 21.3.0.0.0
+
+Recompile item_cat_seqs.pkb
+
+Package body created.
+
+No errors.
+Just set context values: SEQ_SIZE = 3, MAX_PRICE = 5, ITEM_WIDTH = 1, TOP_N = 3
+Previously set context values: SEQ_TYPE = , MIN_VALUE = , KEEP_NUM =
+
+PL/SQL procedure successfully completed.
+
+
+PL/SQL procedure successfully completed.
+
+Pop_Table_Iterate
+old   2:   Item_Cat_Seqs.Pop_Table_Iterate(p_keep_num      => &KEEP_NUM,
+new   2:   Item_Cat_Seqs.Pop_Table_Iterate(p_keep_num      => 10,
+old   3:                                   p_min_value     => &MIN_VALUE);
+new   3:                                   p_min_value     => 0);
+2 running sums
+Timer Set: Pop_Table_Iterate, Constructed at 09 Jun 2024 15:53:56, written at 15:53:56
+======================================================================================
+Timer                  Elapsed         CPU       Calls       Ela/Call       CPU/Call
+------------------  ----------  ----------  ----------  -------------  -------------
+Initial delete (0)        0.04        0.01           1        0.03600        0.01000
+Initial insert (1)        0.00        0.00           1        0.00200        0.00000
+Insert paths 1 (3)        0.01        0.02           1        0.01100        0.02000
+Delete paths 1 (1)        0.00        0.01           1        0.00300        0.01000
+Insert paths 2 (7)        0.00        0.00           1        0.00000        0.00000
+Delete paths 2 (3)        0.00        0.00           1        0.00000        0.00000
+Insert paths 3 (6)        0.00        0.00           1        0.00100        0.00000
+Delete paths 3 (7)        0.00        0.00           1        0.00000        0.00000
+(Other)                   0.00        0.00           1        0.00000        0.00000
+------------------  ----------  ----------  ----------  -------------  -------------
+Total                     0.05        0.04           9        0.00589        0.00444
+------------------  ----------  ----------  ----------  -------------  -------------
+[Timer timed (per call in ms): Elapsed: 0.00935, CPU: 0.00841]
+
+PL/SQL procedure successfully completed.
+
+
+Path Total Value Total Price  Rank
+---- ----------- ----------- -----
+245           12           5     1
+145           11           4     2
+314           10           5     3
+
+
+PL/SQL procedure successfully completed.
+
+Solutions by Category
+
+Total Value Total Price  Rank Category Min Actual  Max Item List
+----------- ----------- ----- -------- --- ------- --- -------------------------
+         12           5     1 CAT_1    1    <-1    2   2
+                              CAT_2    1      2->  2   4, 5
+         11           4     2 CAT_1    1    <-1    2   1
+                              CAT_2    1      2->  2   4, 5
+         10           5     3 CAT_1    1      2->  2   3, 1
+                              CAT_2    1    <-1    2   4
+
+6 rows selected.
+
+
+PL/SQL procedure successfully completed.
+
+Pop_Table_Iterate_Base
+old   2:   Item_Cat_Seqs.Pop_Table_Iterate_Base(p_keep_num      => &KEEP_NUM,
+new   2:   Item_Cat_Seqs.Pop_Table_Iterate_Base(p_keep_num      => 10,
+old   3:                                        p_min_value     => &MIN_VALUE);
+new   3:                                        p_min_value     => 0);
+2 running sums
+Timer Set: Pop_Table_Iterate_Base, Constructed at 09 Jun 2024 15:53:57, written at 15:53:57
+===========================================================================================
+Timer                       Elapsed         CPU       Calls       Ela/Call       CPU/Call
+-----------------------  ----------  ----------  ----------  -------------  -------------
+Initial delete (0)             0.02        0.01           1        0.02400        0.01000
+Initial insert (1)             0.00        0.01           1        0.00200        0.01000
+Insert paths_Base 1 (3)        0.01        0.01           1        0.01000        0.01000
+Delete paths_Base 1 (1)        0.00        0.00           1        0.00300        0.00000
+Insert paths_Base 2 (7)        0.00        0.00           1        0.00000        0.00000
+Delete paths_Base 2 (3)        0.00        0.00           1        0.00000        0.00000
+Insert paths_Base 3 (6)        0.00        0.00           1        0.00000        0.00000
+Delete paths_Base 3 (7)        0.00        0.00           1        0.00000        0.00000
+(Other)                        0.00        0.00           1        0.00000        0.00000
+-----------------------  ----------  ----------  ----------  -------------  -------------
+Total                          0.04        0.03           9        0.00433        0.00333
+-----------------------  ----------  ----------  ----------  -------------  -------------
+[Timer timed (per call in ms): Elapsed: 0.00909, CPU: 0.00909]
+
+PL/SQL procedure successfully completed.
+
+
+Path Total Value Total Price  Rank
+---- ----------- ----------- -----
+245           12           5     1
+145           11           4     2
+314           10           5     3
+
+
+PL/SQL procedure successfully completed.
+
+Pop_Table_Iterate_Link
+old   2:   Item_Cat_Seqs.Pop_Table_Iterate_Link(p_keep_num      => &KEEP_NUM,
+new   2:   Item_Cat_Seqs.Pop_Table_Iterate_Link(p_keep_num      => 10,
+old   3:                                        p_min_value     => &MIN_VALUE);
+new   3:                                        p_min_value     => 0);
+2 running sums
+Timer Set: Pop_Table_Iterate_Link, Constructed at 09 Jun 2024 15:53:57, written at 15:53:57
+===========================================================================================
+Timer                        Elapsed         CPU       Calls       Ela/Call       CPU/Call
+------------------------  ----------  ----------  ----------  -------------  -------------
+Initial delete (0)              0.02        0.00           1        0.02400        0.00000
+Initial insert (1)              0.00        0.01           1        0.00200        0.01000
+Insert item_links  1 (1)        0.00        0.00           1        0.00200        0.00000
+Insert paths_Link 1 (3)         0.01        0.01           1        0.01200        0.01000
+Delete paths_Link 1 (1)         0.00        0.00           1        0.00300        0.00000
+Insert item_links  2 (3)        0.00        0.00           1        0.00000        0.00000
+Insert paths_Link 2 (7)         0.00        0.00           1        0.00100        0.00000
+Delete paths_Link 2 (3)         0.00        0.00           1        0.00000        0.00000
+Insert item_links  3 (7)        0.00        0.00           1        0.00000        0.00000
+Insert paths_Link 3 (6)         0.00        0.00           1        0.00000        0.00000
+Delete paths_Link 3 (7)         0.00        0.00           1        0.00000        0.00000
+(Other)                         0.00        0.00           1        0.00000        0.00000
+------------------------  ----------  ----------  ----------  -------------  -------------
+Total                           0.04        0.02          12        0.00367        0.00167
+------------------------  ----------  ----------  ----------  -------------  -------------
+[Timer timed (per call in ms): Elapsed: 0.01030, CPU: 0.01010]
+
+PL/SQL procedure successfully completed.
+
+
+Path Total Value Total Price  Rank
+---- ----------- ----------- -----
+245           12           5     1
+145           11           4     2
+314           10           5     3
+
+
+PL/SQL procedure successfully completed.
+
+old   2:      Item_Cat_Seqs.Set_Contexts(p_keep_num      => &KEEP_NUM,
+new   2:      Item_Cat_Seqs.Set_Contexts(p_keep_num      => 10,
+old   3:                                 p_min_value     => &MIN_VALUE);
+new   3:                                 p_min_value     => 0);
+Just set context values: MIN_VALUE = 0, KEEP_NUM = 10
+Previously set context values: SEQ_TYPE = , SEQ_SIZE = 3, MAX_PRICE = 5, ITEM_WIDTH = 1, TOP_N = 3
+
+PL/SQL procedure successfully completed.
+
+paths_link_ranked_item_v - item level
+
+Total Value Total Price  Rank Category Item Name            Value      Price
+----------- ----------- ----- -------- ---- ---------- ---------- ----------
+         12           5     1 CAT_1    2    Item-12             2          2
+                              CAT_2    4    Item-21             6          1
+                                       5    Item-22             4          2
+         11           4     2 CAT_1    1    Item-11             1          1
+                              CAT_2    4    Item-21             6          1
+                                       5    Item-22             4          2
+         10           5     3 CAT_1    3    Item-13             3          3
+                                       1    Item-11             1          1
+                              CAT_2    4    Item-21             6          1
+
+9 rows selected.
+
+Elapsed: 00:00:00.01
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+Pop_Table_Iterate_Base_Link
+old   2:   Item_Cat_Seqs.Pop_Table_Iterate_Base_Link(p_keep_num      => &KEEP_NUM,
+new   2:   Item_Cat_Seqs.Pop_Table_Iterate_Base_Link(p_keep_num      => 10,
+old   3:                                             p_min_value     => &MIN_VALUE);
+new   3:                                             p_min_value     => 0);
+2 running sums
+Timer Set: Pop_Table_Iterate_Base_Link, Constructed at 09 Jun 2024 15:53:57, written at 15:53:57
+================================================================================================
+Timer                             Elapsed         CPU       Calls       Ela/Call       CPU/Call
+-----------------------------  ----------  ----------  ----------  -------------  -------------
+Initial delete (0)                   0.03        0.04           1        0.03400        0.04000
+Initial insert (1)                   0.00        0.00           1        0.00200        0.00000
+Insert item_base_links  1 (1)        0.00        0.00           1        0.00200        0.00000
+Insert paths_base_Link 1 (3)         0.01        0.01           1        0.01100        0.01000
+Delete paths_base_Link 1 (1)         0.00        0.00           1        0.00400        0.00000
+Insert item_base_links  2 (3)        0.00        0.00           1        0.00000        0.00000
+Insert paths_base_Link 2 (7)         0.00        0.00           1        0.00000        0.00000
+Delete paths_base_Link 2 (3)         0.00        0.00           1        0.00000        0.00000
+Insert item_base_links  3 (7)        0.00        0.00           1        0.00000        0.00000
+Insert paths_base_Link 3 (6)         0.00        0.00           1        0.00100        0.00000
+Delete paths_base_Link 3 (7)         0.00        0.00           1        0.00000        0.00000
+(Other)                              0.00        0.00           1        0.00000        0.00000
+-----------------------------  ----------  ----------  ----------  -------------  -------------
+Total                                0.05        0.05          12        0.00450        0.00417
+-----------------------------  ----------  ----------  ----------  -------------  -------------
+[Timer timed (per call in ms): Elapsed: 0.00935, CPU: 0.00935]
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.15
+
+Path Total Value Total Price  Rank
+---- ----------- ----------- -----
+245           12           5     1
+145           11           4     2
+314           10           5     3
+
+Elapsed: 00:00:00.02
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+old   2:   Item_Cat_Seqs.Init(p_keep_num      => &KEEP_NUM,
+new   2:   Item_Cat_Seqs.Init(p_keep_num      => 10,
+old   3:                      p_min_value     => &MIN_VALUE);
+new   3:                      p_min_value     => 0);
+2 running sums
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+Array_Iterate
+
+Path Total Value Total Price  Rank
+---- ----------- ----------- -----
+245           12           5     1
+145           11           4     2
+314           10           5     3
+
+Timer Set: Array_Iterate, Constructed at 09 Jun 2024 15:53:57, written at 15:53:57
+==================================================================================
+Timer                   Elapsed         CPU       Calls       Ela/Call       CPU/Call
+-------------------  ----------  ----------  ----------  -------------  -------------
+Insert 1 (3)               0.01        0.00           1        0.00500        0.00000
+Reset paths array 1        0.00        0.00           1        0.00000        0.00000
+Insert 2 (7)               0.00        0.00           1        0.00100        0.00000
+Reset paths array 2        0.00        0.00           1        0.00000        0.00000
+Insert 3 (6)               0.00        0.00           1        0.00000        0.00000
+Pipe rows                  0.00        0.00           1        0.00000        0.00000
+(Other)                    0.00        0.00           1        0.00000        0.00000
+-------------------  ----------  ----------  ----------  -------------  -------------
+Total                      0.01        0.00           7        0.00086        0.00000
+-------------------  ----------  ----------  ----------  -------------  -------------
+[Timer timed (per call in ms): Elapsed: 0.00990, CPU: 0.00891]
+Elapsed: 00:00:00.11
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+Pop_Table_Recurse
+old   2:   Item_Cat_Seqs.Pop_Table_Recurse(p_keep_num      => &KEEP_NUM,
+new   2:   Item_Cat_Seqs.Pop_Table_Recurse(p_keep_num      => 10,
+old   3:                                   p_min_value     => &MIN_VALUE);
+new   3:                                   p_min_value     => 0);
+2 running sums
+Timer Set: Pop_Table_Recurse, Constructed at 09 Jun 2024 15:53:57, written at 15:53:57
+======================================================================================
+Timer                  Elapsed         CPU       Calls       Ela/Call       CPU/Call
+------------------  ----------  ----------  ----------  -------------  -------------
+Initial delete (6)        0.00        0.00           1        0.00100        0.00000
+Initial insert (1)        0.00        0.00           1        0.00000        0.00000
+Insert paths 1 (3)        0.00        0.00           1        0.00000        0.00000
+Delete paths 1 (1)        0.00        0.00           1        0.00000        0.00000
+Insert paths 2 (7)        0.00        0.00           1        0.00000        0.00000
+Delete paths 2 (3)        0.00        0.00           1        0.00000        0.00000
+Insert paths 3 (6)        0.00        0.00           1        0.00100        0.00000
+Delete paths 3 (7)        0.00        0.00           1        0.00000        0.00000
+(Other)                   0.00        0.00           1        0.00000        0.00000
+------------------  ----------  ----------  ----------  -------------  -------------
+Total                     0.00        0.00           9        0.00022        0.00000
+------------------  ----------  ----------  ----------  -------------  -------------
+[Timer timed (per call in ms): Elapsed: 0.00926, CPU: 0.00833]
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.10
+
+Path Total Value Total Price  Rank
+---- ----------- ----------- -----
+245           12           5     1
+145           11           4     2
+314           10           5     3
+
+Elapsed: 00:00:00.00
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+old   2:   Item_Cat_Seqs.Init(p_keep_num      => &KEEP_NUM,
+new   2:   Item_Cat_Seqs.Init(p_keep_num      => 10,
+old   3:                      p_min_value     => &MIN_VALUE);
+new   3:                      p_min_value     => 0);
+2 running sums
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+Array_Recurse
+
+Path Total Value Total Price  Rank
+---- ----------- ----------- -----
+245           12           5     1
+145           11           4     2
+314           10           5     3
+
+Timer Set: Array_Recurse, Constructed at 09 Jun 2024 15:53:57, written at 15:53:57
+==================================================================================
+Timer                    Elapsed         CPU       Calls       Ela/Call       CPU/Call
+--------------------  ----------  ----------  ----------  -------------  -------------
+Recurse level: 1 (3)        0.02        0.01           1        0.01700        0.01000
+Recurse level: 2 (7)        0.00        0.00           1        0.00000        0.00000
+Recurse level: 3 (6)        0.00        0.00           1        0.00000        0.00000
+(Other)                     0.00        0.00           1        0.00000        0.00000
+--------------------  ----------  ----------  ----------  -------------  -------------
+Total                       0.02        0.01           4        0.00425        0.00250
+--------------------  ----------  ----------  ----------  -------------  -------------
+[Timer timed (per call in ms): Elapsed: 0.00909, CPU: 0.00818]
+Elapsed: 00:00:00.12
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+Timer Set: Item_Cat_Seqs, Constructed at 09 Jun 2024 15:53:56, written at 15:53:57
+==================================================================================
+Timer                                   Elapsed         CPU       Calls       Ela/Call       CPU/Call
+-----------------------------------  ----------  ----------  ----------  -------------  -------------
+Pop_Table_Iterate                          0.16        0.13           1        0.16100        0.13000
+Solutions by Category                      0.02        0.00           1        0.01700        0.00000
+Pop_Table_Iterate_Base                     0.15        0.13           1        0.15000        0.13000
+Pop_Table_Iterate_Link                     0.18        0.12           1        0.17700        0.12000
+Pop_Table_Iterate_Link - item level        0.02        0.01           1        0.02300        0.01000
+Pop_Table_Iterate_Base_Link                0.18        0.17           1        0.18300        0.17000
+Array_Iterate                              0.12        0.10           1        0.12400        0.10000
+Pop_Table_Recurse                          0.11        0.10           1        0.10900        0.10000
+Array_Recurse                              0.13        0.10           1        0.13000        0.10000
+(Other)                                    0.00        0.00           1        0.00100        0.00000
+-----------------------------------  ----------  ----------  ----------  -------------  -------------
+Total                                      1.08        0.86          10        0.10750        0.08600
+-----------------------------------  ----------  ----------  ----------  -------------  -------------
+[Timer timed (per call in ms): Elapsed: 0.00971, CPU: 0.00874]
+
+PL/SQL procedure successfully completed.
+
+
+'END:'||TO_CHAR(SYSDATE,'DD-MON-YY
+----------------------------------
+End: 09-JUN-2024 15:53:58
+
