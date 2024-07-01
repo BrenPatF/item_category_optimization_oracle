@@ -13,6 +13,9 @@ This project has the code for a series of eight blog articles on `Optimization P
 - [OPICO 7: Verification](.) [Available: 11 August 2024]
 - [OPICO 8: Automation]() [Available: 18 August 2024]
 
+#### Twitter
+- [Thread with Short Recordings](https://x.com/BrenPatF/status/1807642673748033675)
+
 <img src="img/student-8206673_1280.jpg" style="width: 100%; max-width: 100%;" /><br />
 [Image by <a href="https://pixabay.com/users/aviavlad-9412685/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=8206673">Владимир</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=8206673">Pixabay</a>]
 
