@@ -24,30 +24,8 @@ with various combinations of parameters for each of three datasets
 **************************************************************************************************#>
 Date -format "dd-MMM-yy HH:mm:ss"
 $startTime = Get-Date
-<#**************************************************************************************************
-Name: SCRIPT.ps1                       Author: Brendan Furey                       Date: 30-Jun-2024
 
-Component Powershell script in 'Optimization Problems with Items and Categories in Oracle' project
-
-    GitHub: https://github.com/BrenPatF/item_category_optimization_oracle
-    Blog:   https://brenpatf.github.io (Posts OPICO 1-8)
-
-POWERSHELL SCRIPTS
-====================================================================================================
-|  Powershell Script        | Description                                                          |
-|==================================================================================================|
-|  Copy-DataFilesInput.ps1  | Copies England dataset file and unit test JSON file to INPUT folder  |
-|  Install-Ico.ps1          | Installation driver script                                           |
-|  app\Run-All.ps1          | Run driver script for different solution methods for the             |
-|                           | optimization problem, with various combinations of parameters for    |
-|                           | each of three datasets                                               |
-|  app\Run-Perturb.ps1      | Runs a sqlplus script across a range of maximum prices on all three  |
-|                           | datasets, using the fastest solution method                          |
-====================================================================================================
-
-This file has the script to 
-**************************************************************************************************#>
-ctories = Get-ChildItem -Directory | Where-Object { $_.Name -match "^results_\d+$" }
+$directories = Get-ChildItem -Directory | Where-Object { $_.Name -match "^results_\d+$" }
 [int]$maxIndex = 0
 if ($directories.Count -gt 0) {
     [int[]]$indexLis = $directories | 
