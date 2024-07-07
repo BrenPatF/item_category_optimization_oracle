@@ -1,11 +1,11 @@
 # Optimization Problems with Items and Categories in Oracle
 <img src="img/mountains.png"><br />
 
-This project has the code for a series of eight blog articles on `Optimization Problems with Items and Categories in Oracle`. The articles aim to provide a more formal treatment of algorithms for such problems than earlier articles by the author, together with practical implementations, examples and unit testing in SQL and PL/SQL.
+This project has the code for a series of eight blog articles on `Optimization Problems with Items and Categories in Oracle`. The articles aim to provide a more formal treatment of algorithms for such problems than earlier articles by the author, together with practical implementations, examples and verification techniques in SQL and PL/SQL.
 
 #### List of Articles
 - [OPICO 1: Algorithms for Item Sequence Generation](https://brenpatf.github.io/2024/06/30/opico-1-algorithms-for-generation.html)
-- [OPICO 2: SQL for Item Sequence Generation]() [Available: 7 July 2024]
+- [OPICO 2: SQL for Item Sequence Generation](https://brenpatf.github.io/2024/07/07/opico-2_sql_solutions_for_generation.html)
 - [OPICO 3: Algorithms for Item/Category Optimization]() [Available: 14 July 2024]
 - [OPICO 4: Recursive SQL for Item/Category Optimization]() [Available: 21 July 2024]
 - [OPICO 5: Tuning Recursive SQL for Item/Category Optimization]() [Available: 28 July 2024]
@@ -38,7 +38,7 @@ The knapsack problem and many other problems in combinatorial optimization requi
 
 I applied this kind of approach using SQL for a number of problems, starting in January 2013 with [A Simple SQL Solution for the Knapsack Problem (SKP-1)](https://brenpatf.github.io/560), and I wrote a summary article, [Knapsacks and Networks in SQL](https://brenpatf.github.io/2232), in December 2017 when I put the code onto GitHub, [sql_demos - Brendan's repo for interesting SQL](https://github.com/BrenPatF/sql_demos).
 
-The latest series of articles takes a broader and deeper approach to the problems covered, including mathematics, verification methods and automation, with a variety of algorithms and implementations.
+The latest series of articles takes a broader and deeper approach to the problems covered, including mathematics, verification techniques and automation, with a variety of algorithms and implementations.
 
 ## Installation
 [&uarr; In this README...](#in-this-readme)<br />
@@ -223,6 +223,7 @@ More information can be found in the seventh article in the associated blog seri
 [&uarr; In this README...](#in-this-readme)<br />
 [&darr; Running for Various Sets of Filtering Parameter Values](#running-for-various-sets-of-filtering-parameter-values)<br />
 [&darr; Running the Perturbation Analysis](#running-the-perturbation-analysis)<br />
+[&darr; Running the Sequence Generation Scripts](#running-the-sequence-generation-scripts)<br />
 
 ### Running for Various Sets of Filtering Parameter Values
 [&uarr; Running the Solution Method Scripts](#running-the-solution-method-scripts)<br />
@@ -817,6 +818,73 @@ It creates a summary log file, Run-Perturb_xx.log and a subfolder, perturb_xx, w
 Here is a graph of the results for the England datasets, showing the expected monotonic value increase with maximum price until a maximum value is reached.
 
 <img src="img/perturb_eng.png">
+
+### Running the Sequence Generation Scripts
+[&uarr; Running the Solution Method Scripts](#running-the-solution-method-scripts)<br />
+
+#### [Schema: app; Folder: app] Run-ItemSeqs.ps1
+
+There is a powershell script Run-ItemSeqs.ps1 that runs sqlplus scripts for different solution methods for the sequence generation problem, for the Small dataset only. This includes pure recursive SQL methods, using both concatenated items string, and nested table array, for the paths, an analysis script for some odd cycle behaviour issues, and mixed PL/SQL and SQL methods.
+
+<div style="overflow-y: auto; max-height: 500px">
+
+```powershell
+Date -format "dd-MMM-yy HH:mm:ss"
+$startTime = Get-Date
+
+$directories = Get-ChildItem -Directory | Where-Object { $_.Name -match "^item_seqs_\d+$" }
+[int]$maxIndex = 0
+if ($directories.Count -gt 0) {
+    [int[]]$indexLis = $directories |
+        ForEach-Object {
+            $_.Name -replace 'item_seqs_', ''
+        }
+    $maxIndex = ($indexLis | Measure-Object -Maximum).Maximum
+}
+$nxtIndex = ($maxIndex + 1).ToString("D2")
+$newDir = ('item_seqs_' + $nxtIndex)
+New-Item ('item_seqs_' + $nxtIndex) -ItemType Directory
+
+$logFile = $PSScriptRoot + '\Run-ItemSeqs_' + $nxtIndex + '.log'
+$inputs = [ordered]@{
+    sml = [ordered]@{views_sml           = @()
+                     item_seqs_rsf       = @()
+                     item_seqs_rsf_cycle = @()
+                     item_seqs_rsf_nt    = @()
+                     item_seqs_pls       = @(@('MP'),@('MC'),@('SP'),@('SC'))}
+}
+
+foreach($i in $inputs.Keys){
+    Set-Location $newDir
+    $i
+    [string]$cmdLis = ''
+    foreach($v in $inputs[$i]) {
+        foreach($k in $v.Keys) {
+            if($v[$k].length -eq 0) {
+                $cmdLis += ('@..\' + $k + [Environment]::NewLine)
+            }
+            foreach($p in $v[$k]) {
+                $newCmd = ('@..\' + $k + ' ' + $p[0])
+                ("newCmd = " + $newCmd)
+                $p
+                $cmdLis += ($newCmd + [Environment]::NewLine)
+            }
+        }
+    }
+    $cmdLis
+    $output = $cmdLis | sqlplus 'app/app@orclpdb'
+    $output
+    Set-Location ..
+
+}
+$elapsedTime = (Get-Date) - $startTime
+$roundedTime = [math]::Round($elapsedTime.TotalSeconds)
+
+"Total time taken: $roundedTime seconds" | Out-File $logFile -Append -encoding utf8
+```
+</div>
+
+It creates a summary log file, Run-ItemSeqs_xx.log and a subfolder, perturb_xx, with the detailed log files, where xx is a 2 digit integer 1 greater than that of the previous run.
 
 ## Running the Unit Tests
 [&uarr; In this README...](#in-this-readme)<br />

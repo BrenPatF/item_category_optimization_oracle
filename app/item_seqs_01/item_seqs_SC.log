@@ -1,0 +1,138 @@
+
+Database             Time                 Version
+-------------------- -------------------- ------------------------------
+Start: FREE          07-JUL-2024 11:20:54 Version 23.4.0.24.05
+
+Four PL/SQL methods for sequence type SC
+========================================
+Pop_Table_Iterate - SC
+old   2:   Item_Seqs.Pop_Table_Iterate(p_seq_type => '&SEQ_TP');
+new   2:   Item_Seqs.Pop_Table_Iterate(p_seq_type => 'SC');
+
+PL/SQL procedure successfully completed.
+
+
+Path Total Price Total Value
+---- ----------- -----------
+123            6           6
+124            4           9
+125            5           7
+126            6           5
+134            5          10
+135            6           8
+136            7           6
+145            4          11
+146            5           9
+156            6           7
+234            6          11
+235            7           9
+236            8           7
+245            5          12
+246            6          10
+256            7           8
+345            6          13
+346            7          11
+356            8           9
+456            6          12
+
+20 rows selected.
+
+Pop_Table_Recurse - SC
+old   2:   Item_Seqs.Pop_Table_Recurse(p_seq_type => '&SEQ_TP');
+new   2:   Item_Seqs.Pop_Table_Recurse(p_seq_type => 'SC');
+
+PL/SQL procedure successfully completed.
+
+old   3:  WHERE lev = &SEQ_SIZE
+new   3:  WHERE lev = 3
+
+Path Total Price Total Value
+---- ----------- -----------
+123            6           6
+124            4           9
+125            5           7
+126            6           5
+134            5          10
+135            6           8
+136            7           6
+145            4          11
+146            5           9
+156            6           7
+234            6          11
+235            7           9
+236            8           7
+245            5          12
+246            6          10
+256            7           8
+345            6          13
+346            7          11
+356            8           9
+456            6          12
+
+20 rows selected.
+
+Array_Iterate - SC
+old   2:   FROM Item_Seqs.Array_Iterate(p_seq_type => '&SEQ_TP')
+new   2:   FROM Item_Seqs.Array_Iterate(p_seq_type => 'SC')
+
+Path Total Price Total Value
+---- ----------- -----------
+123            6           6
+124            4           9
+125            5           7
+126            6           5
+134            5          10
+135            6           8
+136            7           6
+145            4          11
+146            5           9
+156            6           7
+234            6          11
+235            7           9
+236            8           7
+245            5          12
+246            6          10
+256            7           8
+345            6          13
+346            7          11
+356            8           9
+456            6          12
+
+20 rows selected.
+
+Array_Recurse - SC
+old   2:   FROM Item_Seqs.Array_Recurse(p_seq_type => '&SEQ_TP')
+new   2:   FROM Item_Seqs.Array_Recurse(p_seq_type => 'SC')
+old   3:  WHERE lev = &SEQ_SIZE
+new   3:  WHERE lev = 3
+
+Path Total Price Total Value
+---- ----------- -----------
+123            6           6
+124            4           9
+125            5           7
+126            6           5
+134            5          10
+135            6           8
+136            7           6
+145            4          11
+146            5           9
+156            6           7
+234            6          11
+235            7           9
+236            8           7
+245            5          12
+246            6          10
+256            7           8
+345            6          13
+346            7          11
+356            8           9
+456            6          12
+
+20 rows selected.
+
+
+'END:'||TO_CHAR(SYSDATE,'DD-MON-YY
+----------------------------------
+End: 07-JUL-2024 11:20:55
+
