@@ -8,7 +8,7 @@ This project has the code for a series of eight blog articles on `Optimization P
 - [OPICO 2: SQL for Item Sequence Generation](https://brenpatf.github.io/2024/07/07/opico-2_sql_solutions_for_generation.html)
 - [OPICO 3: Algorithms for Item/Category Optimization](https://brenpatf.github.io/2024/07/14/opico-3_algorithms_for_itemcategory_optimization.html)
 - [OPICO 4: Recursive SQL for Item/Category Optimization](https://brenpatf.github.io/2024/07/21/opico-4_sql_for_itemcategory_optimization.html)
-- [OPICO 5: Tuning Recursive SQL for Item/Category Optimization]() [Available: 28 July 2024]
+- [OPICO 5: Tuning Recursive SQL for Item/Category Optimization](https://brenpatf.github.io/2024/07/28/opico-5_tuning_sql_for_itemcategory_optimization.html)
 - [OPICO 6: Mixed SQL and PL/SQL Methods for Item/Category Optimization]() [Available: 4 August 2024]
 - [OPICO 7: Verification](.) [Available: 11 August 2024]
 - [OPICO 8: Automation]() [Available: 18 August 2024]
