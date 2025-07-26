@@ -3,15 +3,8 @@
 
 This project has the code for a series of eight blog articles on `Optimization Problems with Items and Categories in Oracle`. The articles aim to provide a more formal treatment of algorithms for such problems than earlier articles by the author, together with practical implementations, examples and verification techniques in SQL and PL/SQL.
 
-#### List of Articles
-- [OPICO 1: Algorithms for Item Sequence Generation](https://brenpatf.github.io/2024/06/30/opico-1_algorithms-for-generation.html)
-- [OPICO 2: SQL for Item Sequence Generation](https://brenpatf.github.io/2024/07/07/opico-2_sql_solutions_for_generation.html)
-- [OPICO 3: Algorithms for Item/Category Optimization](https://brenpatf.github.io/2024/07/14/opico-3_algorithms_for_itemcategory_optimization.html)
-- [OPICO 4: Recursive SQL for Item/Category Optimization](https://brenpatf.github.io/2024/07/21/opico-4_sql_for_itemcategory_optimization.html)
-- [OPICO 5: Tuning Recursive SQL for Item/Category Optimization](https://brenpatf.github.io/2024/07/28/opico-5_tuning_sql_for_itemcategory_optimization.html)
-- [OPICO 6: Mixed SQL and PL/SQL Methods for Item/Category Optimization](https://brenpatf.github.io/2024/08/04/opico-6_mixed_sql_plsql_for_itemcategory_optimization.html)
-- [OPICO 7: Verification](https://brenpatf.github.io/2024/08/11/opico-7_verification.html)
-- [OPICO 8: Automation](https://brenpatf.github.io/2024/08/18/opico-8_automation.html)
+#### Blog Index Page
+- [Optimization Problems with Items and Categories in Oracle](https://brenpatf.github.io/2024/06/30/opico-series-index.html)
 
 #### Twitter <img src="img/twitter.png" style="width: 10%; max-width: 5%;"/><br />
 - [Thread with Short Recordings](https://x.com/BrenPatF/status/1807642673748033675)
